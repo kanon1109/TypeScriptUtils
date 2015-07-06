@@ -67,7 +67,7 @@ export class Random
     * @param array
     * @return
     */
-    public static shuffle(array:Array<any>):Array<any>
+    public static shuffle(array:any[]):any[]
     {
         array.sort(Random._randomCompare);
         return array;
@@ -108,14 +108,14 @@ export class Random
      * @return
      *
      */
-    public static sample(sequence:Array<any>, num:number):Array<any>
+    public static sample(sequence:any[], num:number):any[]
     {
         var len:number = sequence.length;
         if (num <= 0 || len < num)
             throw new Error("采样数量不够");
 
-        var selected:Array<any> = [];
-        var indices:Array<any> = [];
+        var selected:any[] = [];
+        var indices:any[] = [];
         for (var i:number = 0; i < num; i++)
         {
             var index:number = Math.floor(Random.random() * len);

@@ -1,6 +1,6 @@
 [
-	"cn/geckos/utils/Random.ts",
+	"cn/geckos/utils/StringUtil.ts",
 	"LoadingUI.ts",
-	"TestRandom.ts",
+	"TestString.ts",
 	"Main.ts"
 ]
