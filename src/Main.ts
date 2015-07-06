@@ -107,7 +107,8 @@ class Main extends egret.DisplayObjectContainer {
     private createGameScene():void
     {
         //new TestRandom();
-        new TestString();
+        //new TestString();
+        new TestArrayUtil();
     }
 }
 

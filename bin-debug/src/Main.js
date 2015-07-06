@@ -93,7 +93,8 @@ var Main = (function (_super) {
      */
     __egretProto__.createGameScene = function () {
         //new TestRandom();
-        new TestString();
+        //new TestString();
+        new TestArrayUtil();
     };
     return Main;
 })(egret.DisplayObjectContainer);

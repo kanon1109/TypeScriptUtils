@@ -1,6 +1,6 @@
 [
-	"cn/geckos/utils/StringUtil.ts",
+	"cn/geckos/utils/ArrayUtil.ts",
 	"LoadingUI.ts",
-	"TestString.ts",
+	"TestArrayUtil.ts",
 	"Main.ts"
 ]
