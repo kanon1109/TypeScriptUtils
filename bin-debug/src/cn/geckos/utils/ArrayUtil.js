@@ -75,6 +75,42 @@ var cn;
                     }
                     return newAry;
                 };
+                /**
+                 * 返回2个数组中不同的部分
+                 * 比如数组A = [1, 2, 3, 4, 6]
+                 *    数组B = [0, 2, 1, 3, 4]
+                 * 返回[6, 0]
+                 * @param	aryA
+                 * @param	aryB
+                 * @return
+                 */
+                ArrayUtil.getDifferAry = function (aryA, aryB) {
+                    aryA = ArrayUtil.getUniqueAry(aryA);
+                    aryB = ArrayUtil.getUniqueAry(aryB);
+                    var ary = aryA.concat(aryB);
+                    var uObj = new Object();
+                    var newAry = [];
+                    var count = ary.length;
+                    for (var j = 0; j < count; ++j) {
+                        if (!uObj[ary[j]]) {
+                            uObj[ary[j]] = new Object();
+                            uObj[ary[j]].count = 0;
+                            uObj[ary[j]].key = ary[j];
+                            uObj[ary[j]].count++;
+                        }
+                        else {
+                            if (uObj[ary[j]] instanceof Object) {
+                                uObj[ary[j]].count++;
+                            }
+                        }
+                    }
+                    for (var i in uObj) {
+                        if (uObj[i].count != 2) {
+                            newAry.unshift(uObj[i].key);
+                        }
+                    }
+                    return newAry;
+                };
                 return ArrayUtil;
             })();
             utils.ArrayUtil = ArrayUtil;
@@ -82,4 +118,3 @@ var cn;
         })(utils = geckos.utils || (geckos.utils = {}));
     })(geckos = cn.geckos || (cn.geckos = {}));
 })(cn || (cn = {}));
-//# sourceMappingURL=ArrayUtil.js.map

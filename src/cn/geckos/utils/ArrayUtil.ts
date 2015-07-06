@@ -99,9 +99,9 @@ export class ArrayUtil
     {
         aryA = ArrayUtil.getUniqueAry(aryA);
         aryB = ArrayUtil.getUniqueAry(aryB);
-        var ary:Array = aryA.concat(aryB);
+        var ary:number[] = aryA.concat(aryB);
         var uObj:Object = new Object ();
-        var newAry:Array = new Array ();
+        var newAry:number[] = [];
         var count:number = ary.length;
         for (var j:number = 0; j < count; ++j)
         {
@@ -120,7 +120,7 @@ export class ArrayUtil
                 }
             }
         }
-        for (var i:String in uObj)
+        for (var i in uObj)
         {
             if(uObj[i].count != 2)
             {

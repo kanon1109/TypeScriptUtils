@@ -9,9 +9,11 @@ var TestArrayUtil = (function () {
         console.log("getMaxElementIndex: " + cn.geckos.utils.ArrayUtil.getMaxElementIndex(arr2));
         console.log("getMinElementIndex: " + cn.geckos.utils.ArrayUtil.getMinElementIndex(arr2));
         console.log("getUniqueAry: " + cn.geckos.utils.ArrayUtil.getUniqueAry([6, 3, 1, 10, 2, 2, 3, 7, 4]));
+        var arr3 = [1, 1, 2, 3, 3, 4, 5, 6, 6, 7];
+        var arr4 = [3, 23, 12, 3, 3, 14, 5, 16, 6, 7];
+        console.log("getDifferAry: " + cn.geckos.utils.ArrayUtil.getDifferAry(arr3, arr4));
     }
     var __egretProto__ = TestArrayUtil.prototype;
     return TestArrayUtil;
 })();
 TestArrayUtil.prototype.__class__ = "TestArrayUtil";
-//# sourceMappingURL=TestArrayUtil.js.map
