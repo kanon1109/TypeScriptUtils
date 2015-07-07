@@ -12,6 +12,62 @@ var cn;
                 }
                 var __egretProto__ = ArrayUtil.prototype;
                 /**
+                 * 执行冒泡排序
+                 * @param	ary
+                 * 算法参考 -- http://www.hiahia.org/datastructure/paixu/paixu8.3.1.1-1.htm
+                 */
+                ArrayUtil.bubbleSort = function (ary) {
+                    var isExchange = false;
+                    for (var i = 0; i < ary.length; i++) {
+                        isExchange = false;
+                        for (var j = ary.length - 1; j > i; j--) {
+                            if (ary[j] < ary[j - 1]) {
+                                var temp = ary[j];
+                                ary[j] = ary[j - 1];
+                                ary[j - 1] = temp;
+                                isExchange = true;
+                            }
+                        }
+                        if (!isExchange)
+                            break;
+                    }
+                };
+                /**
+                 * 执行插入排序
+                 * @param	ary
+                 */
+                ArrayUtil.insertionSort = function (ary) {
+                    var len = ary.length;
+                    for (var i = 1; i < len; i++) {
+                        var val = ary[i];
+                        for (var j = i; j > 0 && ary[j - 1] > val; j--) {
+                            ary[j] = ary[j - 1];
+                        }
+                        ary[j] = val;
+                    }
+                };
+                /**
+                 * 执行二分搜索
+                 * @param	ary		搜索的数组
+                 * @param	value	需要搜索的值
+                 * @return  返回匹配结果的数组索引
+                 */
+                ArrayUtil.binarySearch = function (ary, value) {
+                    var startIndex = 0;
+                    var endIndex = ary.length;
+                    var sub = (startIndex + endIndex) >> 1;
+                    while (startIndex < endIndex) {
+                        if (value <= ary[sub])
+                            endIndex = sub;
+                        else if (value >= ary[sub])
+                            startIndex = sub + 1;
+                        sub = (startIndex + endIndex) >> 1;
+                    }
+                    if (ary[startIndex] == value)
+                        return startIndex;
+                    return -1;
+                };
+                /**
                  * 返回匹配项的索引
                  * @param	ary
                  * @param	num
@@ -111,6 +167,83 @@ var cn;
                     }
                     return newAry;
                 };
+                /**
+                 * 交换数组元素
+                 * @param	array	目标数组
+                 * @param	index1	交换后的索引
+                 * @param	index2	交换前的索引
+                 */
+                ArrayUtil.swap = function (array, index1, index2) {
+                    var temp = array[index1];
+                    array[index1] = array[index2];
+                    array[index2] = temp;
+                };
+                /**
+                 * 清除列表
+                 * @param	ary 列表
+                 */
+                ArrayUtil.clearList = function (ary) {
+                    if (!ary)
+                        return;
+                    var length = ary.length;
+                    for (var i = length - 1; i >= 0; i -= 1) {
+                        ary.splice(i, 1);
+                    }
+                };
+                /**
+                 * 克隆一个数组
+                 * @param	ary 需要克隆的数组
+                 * @return  克隆的数组
+                 */
+                ArrayUtil.cloneList = function (ary) {
+                    if (!ary)
+                        return null;
+                    return ary.slice(0, ary.length);
+                };
+                /**
+                 * 判断2个数组是否相同
+                 * @param	ary1	数组1
+                 * @param	ary2	数组2
+                 * @return	是否相同
+                 */
+                ArrayUtil.equals = function (ary1, ary2) {
+                    if (ary1 == ary2)
+                        return true;
+                    var length = ary1.length;
+                    if (length != ary2.length)
+                        return false;
+                    while (length--) {
+                        if (ary1[length] != ary2[length])
+                            return false;
+                    }
+                    return true;
+                };
+                /**
+                 * 根据索引插入元素，索引和索引后的元素都向后移动一位
+                 * @param	index   插入索引
+                 * @param	value   插入的元素
+                 * @return  插入的元素 未插入则返回空
+                 */
+                ArrayUtil.insert = function (ary, index, value) {
+                    if (!ary)
+                        return null;
+                    var length = ary.length;
+                    if (index > length)
+                        index = length;
+                    if (index < 0)
+                        index = 0;
+                    if (index == length)
+                        ary.push(value); //插入最后
+                    else if (index == 0)
+                        ary.unshift(value); //插入头
+                    else {
+                        for (var i = length - 1; i >= index; i -= 1) {
+                            ary[i + 1] = ary[i];
+                        }
+                        ary[index] = value;
+                    }
+                    return value;
+                };
                 return ArrayUtil;
             })();
             utils.ArrayUtil = ArrayUtil;
@@ -118,3 +251,4 @@ var cn;
         })(utils = geckos.utils || (geckos.utils = {}));
     })(geckos = cn.geckos || (cn.geckos = {}));
 })(cn || (cn = {}));
+//# sourceMappingURL=ArrayUtil.js.map
