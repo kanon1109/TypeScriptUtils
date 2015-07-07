@@ -1,6 +1,6 @@
 var game_file_list = [
-	"cn/geckos/utils/ArrayUtil.js",
+	"cn/geckos/utils/EnterFrame.js",
+	"EnterFrameTest.js",
 	"LoadingUI.js",
-	"TestArrayUtil.js",
 	"Main.js"
 ];

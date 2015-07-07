@@ -1,6 +1,6 @@
 [
-	"cn/geckos/utils/ArrayUtil.ts",
+	"cn/geckos/utils/EnterFrame.ts",
+	"EnterFrameTest.ts",
 	"LoadingUI.ts",
-	"TestArrayUtil.ts",
 	"Main.ts"
 ]

@@ -25,7 +25,7 @@ var TestArrayUtil = (function () {
         var arr6 = cn.geckos.utils.ArrayUtil.cloneList(arr5);
         cn.geckos.utils.ArrayUtil.bubbleSort(arr5);
         console.log("bubbleSort arr5:" + arr5);
-        //cn.geckos.utils.ArrayUtil.insertionSort(arr6);
+        cn.geckos.utils.ArrayUtil.insertionSort(arr6);
         console.log("insertionSort arr6:" + arr6);
         console.log("binarySearch :" + cn.geckos.utils.ArrayUtil.binarySearch(arr6, 100));
     }
@@ -33,4 +33,3 @@ var TestArrayUtil = (function () {
     return TestArrayUtil;
 })();
 TestArrayUtil.prototype.__class__ = "TestArrayUtil";
-//# sourceMappingURL=TestArrayUtil.js.map

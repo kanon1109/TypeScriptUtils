@@ -48,7 +48,7 @@ var cn;
                 };
                 /**
                  * 执行二分搜索
-                 * @param	ary		搜索的数组
+                 * @param	ary		搜索的数组（必须排序过）
                  * @param	value	需要搜索的值
                  * @return  返回匹配结果的数组索引
                  */
@@ -251,4 +251,3 @@ var cn;
         })(utils = geckos.utils || (geckos.utils = {}));
     })(geckos = cn.geckos || (cn.geckos = {}));
 })(cn || (cn = {}));
-//# sourceMappingURL=ArrayUtil.js.map
