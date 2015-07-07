@@ -1,6 +1,6 @@
 [
-	"cn/geckos/utils/EnterFrame.ts",
-	"EnterFrameTest.ts",
+	"cn/geckos/utils/KeyboardManager.ts",
+	"KeyboardManagerTest.ts",
 	"LoadingUI.ts",
 	"Main.ts"
 ]

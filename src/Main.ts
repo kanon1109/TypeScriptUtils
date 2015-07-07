@@ -109,7 +109,8 @@ class Main extends egret.DisplayObjectContainer {
         //new TestRandom();
         //new TestString();
         //new TestArrayUtil();
-        new EnterFrameTest();
+        //new EnterFrameTest();
+        new KeyboardManagerTest();
     }
 }
 

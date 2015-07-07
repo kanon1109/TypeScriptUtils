@@ -1,6 +1,6 @@
 var game_file_list = [
-	"cn/geckos/utils/EnterFrame.js",
-	"EnterFrameTest.js",
+	"cn/geckos/utils/KeyboardManager.js",
+	"KeyboardManagerTest.js",
 	"LoadingUI.js",
 	"Main.js"
 ];

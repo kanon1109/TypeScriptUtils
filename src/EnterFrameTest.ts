@@ -14,6 +14,7 @@ class EnterFrameTest
 
     public test():void
     {
+        
         console.log("test fun");
     }
 

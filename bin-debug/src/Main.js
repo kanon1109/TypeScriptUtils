@@ -95,7 +95,8 @@ var Main = (function (_super) {
         //new TestRandom();
         //new TestString();
         //new TestArrayUtil();
-        new EnterFrameTest();
+        //new EnterFrameTest();
+        new KeyboardManagerTest();
     };
     return Main;
 })(egret.DisplayObjectContainer);

@@ -27,4 +27,3 @@ var EnterFrameTest = (function () {
     return EnterFrameTest;
 })();
 EnterFrameTest.prototype.__class__ = "EnterFrameTest";
-//# sourceMappingURL=EnterFrameTest.js.map
