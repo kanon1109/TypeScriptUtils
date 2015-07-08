@@ -50,33 +50,6 @@ export class KeyboardManager
     public static  Y : string = "Y";
     public static  Z : string = "Z";
 
-    public static  a : string = "a";
-    public static  b : string = "b";
-    public static  c : string = "c";
-    public static  d : string = "d";
-    public static  e : string = "e";
-    public static  f : string = "f";
-    public static  g : string = "g";
-    public static  h : string = "h";
-    public static  i : string = "i";
-    public static  j : string = "j";
-    public static  k : string = "k";
-    public static  l : string = "l";
-    public static  m : string = "m";
-    public static  n : string = "n";
-    public static  o : string = "o";
-    public static  p : string = "p";
-    public static  q : string = "q";
-    public static  r : string = "r";
-    public static  s : string = "s";
-    public static  t : string = "t";
-    public static  u : string = "u";
-    public static  v : string = "v";
-    public static  w : string = "w";
-    public static  x : string = "x";
-    public static  y : string = "y";
-    public static  z : string = "z";
-
     public static  ESC: string = "Esc";
     public static  F1: string = "F1";
     public static  F2: string = "F2";
@@ -134,19 +107,39 @@ export class KeyboardManager
     {
         KeyboardManager.keyDownDict = {};
         KeyboardManager.keyUpDict = {};
-        var _this:any = this;
-        document.addEventListener("keydown", function(event:KeyboardEvent)
+        document.addEventListener("keydown", KeyboardManager.onKeyDonwHander);
+        document.addEventListener("keyup", KeyboardManager.onKeyUpHander);
+    }
+    
+    private static onKeyDonwHander(event:KeyboardEvent):void
+    {
+        console.log("onKeyDonwHander");
+        if(!KeyboardManager.keyDownDict) return;
+        var key:string = KeyboardManager.keyCodeToString(event.keyCode);
+        var o:Object = KeyboardManager.keyDownDict[key];
+        if (o)
         {
-            var key:string = KeyboardManager.keyCodeToString(event.keyCode, event.charCode);
-            var o:Object = KeyboardManager.keyDownDict[key];
-            if (o)
-            {
-                var fun:Function = o["fun"];
-                var thisObj:any = o["thisObj"];
-                var args:any = o["args"];
-                fun.apply(thisObj, args);
-            }
-        });
+            var fun:Function = o["fun"];
+            var thisObj:any = o["thisObj"];
+            var args:any = o["args"];
+            fun.apply(thisObj, args);
+        }
+    }
+    
+    
+    private static onKeyUpHander(event:KeyboardEvent):void
+    {
+        console.log("onKeyUpHander");
+        if(!KeyboardManager.keyUpDict) return;
+        var key:string = KeyboardManager.keyCodeToString(event.keyCode);
+        var o:Object = KeyboardManager.keyUpDict[key];
+        if (o)
+        {
+            var fun:Function = o["fun"];
+            var thisObj:any = o["thisObj"];
+            var args:any = o["args"];
+            fun.apply(thisObj, args);
+        }
     }
 
 
@@ -177,10 +170,9 @@ export class KeyboardManager
     /**
      * 根据keyCode或charCode获取相应的字符串代号
      * @param	keyCode
-     * @param	charCode
      * @return	键盘所指字符串代号
      */
-    private static keyCodeToString(keyCode:number, charCode:number):string
+    private static keyCodeToString(keyCode:number):string
     {
         switch (keyCode)
         {
@@ -251,8 +243,20 @@ export class KeyboardManager
             case 145 :
                 return KeyboardManager.SCROLL_LOCK;
             default :
-                return String.fromCharCode(charCode);
+                return String.fromCharCode(keyCode);
         }
+    }
+    
+    
+    /**
+    * 销毁方法
+    */
+    public static destroy():void
+    {
+        KeyboardManager.keyDownDict = null;
+        KeyboardManager.keyUpDict = null;
+        document.removeEventListener("keydown", KeyboardManager.onKeyDonwHander);
+        document.removeEventListener("keyup", KeyboardManager.onKeyUpHander);
     }
 }
 }

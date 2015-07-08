@@ -18,17 +18,34 @@ var cn;
                 KeyboardManager.init = function () {
                     KeyboardManager.keyDownDict = {};
                     KeyboardManager.keyUpDict = {};
-                    var _this = this;
-                    document.addEventListener("keydown", function (event) {
-                        var key = KeyboardManager.keyCodeToString(event.keyCode, event.charCode);
-                        var o = KeyboardManager.keyDownDict[key];
-                        if (o) {
-                            var fun = o["fun"];
-                            var thisObj = o["thisObj"];
-                            var args = o["args"];
-                            fun.apply(thisObj, args);
-                        }
-                    });
+                    document.addEventListener("keydown", KeyboardManager.onKeyDonwHander);
+                    document.addEventListener("keyup", KeyboardManager.onKeyUpHander);
+                };
+                KeyboardManager.onKeyDonwHander = function (event) {
+                    console.log("onKeyDonwHander");
+                    if (!KeyboardManager.keyDownDict)
+                        return;
+                    var key = KeyboardManager.keyCodeToString(event.keyCode);
+                    var o = KeyboardManager.keyDownDict[key];
+                    if (o) {
+                        var fun = o["fun"];
+                        var thisObj = o["thisObj"];
+                        var args = o["args"];
+                        fun.apply(thisObj, args);
+                    }
+                };
+                KeyboardManager.onKeyUpHander = function (event) {
+                    console.log("onKeyUpHander");
+                    if (!KeyboardManager.keyUpDict)
+                        return;
+                    var key = KeyboardManager.keyCodeToString(event.keyCode);
+                    var o = KeyboardManager.keyUpDict[key];
+                    if (o) {
+                        var fun = o["fun"];
+                        var thisObj = o["thisObj"];
+                        var args = o["args"];
+                        fun.apply(thisObj, args);
+                    }
                 };
                 /**
                  * 注册按键
@@ -58,10 +75,9 @@ var cn;
                 /**
                  * 根据keyCode或charCode获取相应的字符串代号
                  * @param	keyCode
-                 * @param	charCode
                  * @return	键盘所指字符串代号
                  */
-                KeyboardManager.keyCodeToString = function (keyCode, charCode) {
+                KeyboardManager.keyCodeToString = function (keyCode) {
                     switch (keyCode) {
                         case 8:
                             return KeyboardManager.BACK_SPACE;
@@ -130,8 +146,17 @@ var cn;
                         case 145:
                             return KeyboardManager.SCROLL_LOCK;
                         default:
-                            return String.fromCharCode(charCode);
+                            return String.fromCharCode(keyCode);
                     }
+                };
+                /**
+                * 销毁方法
+                */
+                KeyboardManager.destroy = function () {
+                    KeyboardManager.keyDownDict = null;
+                    KeyboardManager.keyUpDict = null;
+                    document.removeEventListener("keydown", KeyboardManager.onKeyDonwHander);
+                    document.removeEventListener("keyup", KeyboardManager.onKeyUpHander);
                 };
                 /**
                  * 键盘事件类型
@@ -167,32 +192,6 @@ var cn;
                 KeyboardManager.X = "X";
                 KeyboardManager.Y = "Y";
                 KeyboardManager.Z = "Z";
-                KeyboardManager.a = "a";
-                KeyboardManager.b = "b";
-                KeyboardManager.c = "c";
-                KeyboardManager.d = "d";
-                KeyboardManager.e = "e";
-                KeyboardManager.f = "f";
-                KeyboardManager.g = "g";
-                KeyboardManager.h = "h";
-                KeyboardManager.i = "i";
-                KeyboardManager.j = "j";
-                KeyboardManager.k = "k";
-                KeyboardManager.l = "l";
-                KeyboardManager.m = "m";
-                KeyboardManager.n = "n";
-                KeyboardManager.o = "o";
-                KeyboardManager.p = "p";
-                KeyboardManager.q = "q";
-                KeyboardManager.r = "r";
-                KeyboardManager.s = "s";
-                KeyboardManager.t = "t";
-                KeyboardManager.u = "u";
-                KeyboardManager.v = "v";
-                KeyboardManager.w = "w";
-                KeyboardManager.x = "x";
-                KeyboardManager.y = "y";
-                KeyboardManager.z = "z";
                 KeyboardManager.ESC = "Esc";
                 KeyboardManager.F1 = "F1";
                 KeyboardManager.F2 = "F2";
