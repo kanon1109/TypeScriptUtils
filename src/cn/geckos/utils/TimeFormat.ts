@@ -64,7 +64,6 @@ export class TimeFormat
         for (var i:number = 0; i < len; i++)
         {
             var n:number = <number>_ary[i];
-            console.log("n "+ n);
             timeNum += n * Math.pow(60, (len - 1 - i));
         }
         timeNum *= 1000;
