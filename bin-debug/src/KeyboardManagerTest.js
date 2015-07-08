@@ -7,14 +7,14 @@ var KeyboardManagerTest = (function () {
     function KeyboardManagerTest() {
         this.index = 0;
         cn.geckos.utils.KeyboardManager.init();
-        cn.geckos.utils.KeyboardManager.registerKey("A", this.test, this, cn.geckos.utils.KeyboardManager.TYPE_KEY_UP);
+        cn.geckos.utils.KeyboardManager.registerKey(cn.geckos.utils.KeyboardManager.SPACE, this.test, this, cn.geckos.utils.KeyboardManager.TYPE_KEY_UP);
     }
     var __egretProto__ = KeyboardManagerTest.prototype;
     __egretProto__.test = function () {
         this.index++;
         console.log("index:" + this.index);
         if (this.index == 2) {
-            cn.geckos.utils.KeyboardManager.unregisterKey("A", cn.geckos.utils.KeyboardManager.TYPE_KEY_UP);
+            cn.geckos.utils.KeyboardManager.unregisterKey(cn.geckos.utils.KeyboardManager.SPACE, cn.geckos.utils.KeyboardManager.TYPE_KEY_UP);
             cn.geckos.utils.KeyboardManager.registerKey("S", this.test2, this);
         }
     };
@@ -28,4 +28,3 @@ var KeyboardManagerTest = (function () {
     return KeyboardManagerTest;
 })();
 KeyboardManagerTest.prototype.__class__ = "KeyboardManagerTest";
-//# sourceMappingURL=KeyboardManagerTest.js.map

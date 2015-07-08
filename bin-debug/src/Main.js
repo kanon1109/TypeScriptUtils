@@ -96,7 +96,8 @@ var Main = (function (_super) {
         //new TestString();
         //new TestArrayUtil();
         //new EnterFrameTest();
-        new KeyboardManagerTest();
+        //new KeyboardManagerTest();
+        new TimeFormatTest();
     };
     return Main;
 })(egret.DisplayObjectContainer);

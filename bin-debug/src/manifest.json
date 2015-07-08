@@ -1,6 +1,6 @@
 [
-	"cn/geckos/utils/KeyboardManager.ts",
-	"KeyboardManagerTest.ts",
+	"cn/geckos/utils/TimeFormat.ts",
 	"LoadingUI.ts",
+	"TimeFormatTest.ts",
 	"Main.ts"
 ]
