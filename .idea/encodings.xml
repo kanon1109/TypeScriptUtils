@@ -4,10 +4,14 @@
     <file url="file://$PROJECT_DIR$/src/MathUtilTest.ts" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/TestString.ts" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/TimeFormatTest.ts" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Vector2DTest.ts" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/cn/geckos/geom/LineSegment.ts" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/cn/geckos/geom/Vector2D.ts" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/cn/geckos/utils/ArrayUtil.ts" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/cn/geckos/utils/EnterFrame.ts" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/cn/geckos/utils/KeyboardManager.ts" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/cn/geckos/utils/MathUtil.ts" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/cn/geckos/utils/RDP.ts" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/cn/geckos/utils/Random.ts" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/cn/geckos/utils/StringUtil.ts" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/cn/geckos/utils/TimeFormat.ts" charset="UTF-8" />
