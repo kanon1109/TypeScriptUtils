@@ -1,6 +1,6 @@
 var game_file_list = [
-	"cn/geckos/utils/TimeFormat.js",
+	"cn/geckos/utils/MathUtil.js",
 	"LoadingUI.js",
-	"TimeFormatTest.js",
+	"MathUtilTest.js",
 	"Main.js"
 ];

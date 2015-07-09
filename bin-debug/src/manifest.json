@@ -1,6 +1,6 @@
 [
-	"cn/geckos/utils/TimeFormat.ts",
+	"cn/geckos/utils/MathUtil.ts",
 	"LoadingUI.ts",
-	"TimeFormatTest.ts",
+	"MathUtilTest.ts",
 	"Main.ts"
 ]
