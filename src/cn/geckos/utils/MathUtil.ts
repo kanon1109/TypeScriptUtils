@@ -53,7 +53,7 @@ export class MathUtil
      * @param	range   最大范围
      * @return  修正后的数字
      */
-    public static fixNumber(num:number, min:number, range:number):number
+    public static fixnumber(num:number, min:number, range:number):number
     {
         num %= range;
         if (num < min)
@@ -474,6 +474,49 @@ export class MathUtil
         if (angle >= 90 && angle < 180) return 2;
         if (angle >= 180 && angle < 270) return 3;
         return 4;
+    }
+
+    /**
+	 * 将数字四舍五入为输入的最接近的倍数。 例如，四舍五入
+	 * 16到最接近的10，您将收到20.类似于内置函数Math.round（）。
+	 * @param	number		需要四舍五入的数字
+	 * @param	nearest		必须找到其倍数的数字
+	 * @return	接近的倍数
+	 */
+	public static roundToNearest(number:number, nearest:number = 1):number
+	{
+		if(nearest == 0) return number;
+		var roundednumber:number = Math.round(MathUtil.roundToPrecision(number / nearest, 10)) * nearest;
+		return MathUtil.roundToPrecision(roundednumber, 10);
+	}
+	
+	/**
+	 * 四舍五入到一定的精确度。 用于限制数量
+	 * 小数部分的小数位数。
+	 * @param	number		输入数字四舍五入。
+	 * @param	precision	要保留的小数位数
+	 * @return	如果不需要舍入，则舍入数字或原始输入
+	 */
+	public static roundToPrecision(number:number, precision:number = 0):number
+	{
+		var decimalPlaces:number = Math.pow(10, precision);
+		return Math.round(decimalPlaces * number) / decimalPlaces;
+	}
+	
+	/**
+     * 获取向量与向量之间的夹角
+     * @param    p1 向量对象
+     * @param    p2 向量对象
+     * @param    degrees 指定是否返回角度值，默认为true
+     * @reutrn   如果degrees为true，则返回向量夹角的角度值，否则返回向量夹角的弧度值。
+     */
+    public static angleBetween(p1:egret.Point, p2:egret.Point, degrees:Boolean = true):number
+    {
+        var dx:number = p1.x - p2.x;
+        var dy:number = p1.y - p2.y;
+        var radians:number =  Math.atan2(dy, dx);
+        if (degrees) return MathUtil.rds2dgs(radians);
+        return radians;
     }
 }
 }
