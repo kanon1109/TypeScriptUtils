@@ -1,8 +1,0 @@
-[
-	"cn/geckos/utils/MathUtil.ts",
-	"cn/geckos/geom/Vector2D.ts",
-	"cn/geckos/geom/LineSegment.ts",
-	"LoadingUI.ts",
-	"Vector2DTest.ts",
-	"Main.ts"
-]

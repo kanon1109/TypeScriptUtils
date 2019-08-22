@@ -48,7 +48,6 @@ export class RDP
         {
             return new Array(firstPoint, lastPoint);
         }
-        return null;
     }
 
 
@@ -72,8 +71,7 @@ export class RDP
         {
             var slope:number = (p2.y - p1.y) / (p2.x - p1.x);
             var intercept:number = p1.y - (slope * p1.x);
-            result =
-                Math.abs(slope * p.x - p.y + intercept) / Math.sqrt(Math.pow(slope, 2) + 1);
+            result = Math.abs(slope * p.x - p.y + intercept) / Math.sqrt(Math.pow(slope, 2) + 1);
         }
         return result;
     }
