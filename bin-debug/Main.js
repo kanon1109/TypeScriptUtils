@@ -149,13 +149,14 @@ var Main = (function (_super) {
      * Create a game scene
      */
     Main.prototype.createGameScene = function () {
-        new TestRandom();
-        new TestString();
-        new TestArrayUtil();
-        new EnterFrameTest();
-        new KeyboardManagerTest();
-        new TimeFormatTest();
-        new MathUtilTest();
+        // new TestRandom();
+        // new TestString();
+        // new TestArrayUtil();
+        // new EnterFrameTest();
+        // new KeyboardManagerTest();
+        // new TimeFormatTest();
+        // new MathUtilTest();
+        new TimeUtilTest();
         // new Vector2DTest();
     };
     return Main;

@@ -53,7 +53,7 @@ export class MathUtil
      * @param	range   最大范围
      * @return  修正后的数字
      */
-    public static fixnumber(num:number, min:number, range:number):number
+    public static fixNumber(num:number, min:number, range:number):number
     {
         num %= range;
         if (num < min)

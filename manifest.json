@@ -18,6 +18,7 @@
 		"bin-debug/TestRandom.js",
 		"bin-debug/TestString.js",
 		"bin-debug/TimeFormatTest.js",
+		"bin-debug/TimeUtilTest.js",
 		"bin-debug/Vector2DTest.js",
 		"bin-debug/KeyboardManagerTest.js",
 		"bin-debug/EnterFrameTest.js",
@@ -25,10 +26,12 @@
 		"bin-debug/cn/geckos/utils/EnterFrame.js",
 		"bin-debug/cn/geckos/utils/KeyboardManager.js",
 		"bin-debug/LoadingUI.js",
+		"bin-debug/cn/geckos/utils/ObjectUtil.js",
 		"bin-debug/cn/geckos/utils/Random.js",
 		"bin-debug/cn/geckos/utils/RDP.js",
 		"bin-debug/cn/geckos/utils/Simplify.js",
 		"bin-debug/cn/geckos/utils/StringUtil.js",
-		"bin-debug/cn/geckos/utils/TimeFormat.js"
+		"bin-debug/cn/geckos/utils/TimeFormat.js",
+		"bin-debug/cn/geckos/utils/TimeUtil.js"
 	]
 }
