@@ -518,5 +518,38 @@ export class MathUtil
         if (degrees) return MathUtil.rds2dgs(radians);
         return radians;
     }
+
+    /**
+	 * 判断 点 是否在 多边形 范围内
+	 * @param point 点x,y 
+	 * @param ps 多边形顶点数组
+	 * @returns boolean
+	 */
+	public static isInPolygon(point:{x:number, y:number}, ps:Array<{x:number, y:number}>):boolean
+    {
+		//http://www.html-js.com/article/1528
+		var px = point.x, py = point.y, flag = false
+		for(var i = 0, l = ps.length, j = l - 1; i < l; j = i, i++) 
+        {
+			var sx = ps[i].x, sy = ps[i].y, tx = ps[j].x, ty = ps[j].y
+			// 点与多边形顶点重合
+			if((sx === px && sy === py) || (tx === px && ty === py)) 
+				return true;
+            
+			// 判断线段两端点是否在射线两侧
+			if((sy < py && ty >= py) || (sy >= py && ty < py)) 
+            {
+				// 线段上与射线 Y 坐标相同的点的 X 坐标
+				var x = sx + (py - sy) * (tx - sx) / (ty - sy)
+				if(x === px) {// 点在多边形的边上
+					return true;
+				}
+				if(x > px) {// 射线穿过多边形的边界
+					flag = !flag
+				}
+			}
+		}
+		return flag;
+    }
 }
 }
