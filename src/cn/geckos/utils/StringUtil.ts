@@ -253,5 +253,21 @@ export class StringUtil
         }
         return newStr;
     }
+	
+	/**{0} 字符替换   */
+	public static strReplace(str: string, rStr: string[]): string 
+	{
+		var i: number = 0, len: number = rStr.length;
+		for (; i < len; i++) 
+		{
+			if (rStr[i] == null || rStr[i] == "") 
+			{
+				rStr[i] = "无";
+				console.log("not word ", str)
+			}
+			str = str.replace("{" + i + "}", rStr[i]);
+		}
+		return str
+	}
 }
 }
