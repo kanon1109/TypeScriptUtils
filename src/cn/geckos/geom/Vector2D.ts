@@ -208,6 +208,47 @@ export class Vector2D
     }
 
     /**
+	 * 截取当前向量
+	 * @param	max
+	 * @return
+	 */
+	public truncate(max: number): Vector2D 
+	{
+		this.length = Math.min(max, this.length);
+		return this;
+	}
+
+    /**
+	 * 反转向量
+	 * @return
+	 */
+    public reverse(): Vector2D 
+    {
+        this._x = -this._x;
+        this._y = -this._y;
+        return this;
+    }
+
+    /**
+     * 差积   差积=0为垂直
+     * @param	v2
+     * @return
+     */
+    public crossProd(v2: Vector2D): Number 
+    {
+        return this._x * v2.y - this._y * v2.x;
+    }
+	
+	/**
+	 * 获取这个向量的方向
+	 * @return int 如果在左边返回-1. 如果在右边返回+1.
+	 */
+	public sign(v2:Vector2D):number
+	{
+		return this.perp.dot(v2) < 0 ? -1 : 1;
+	}
+
+    /**
      * 描述向量实例的字符窜
      */
     public tostring():string

@@ -155,8 +155,8 @@ var Main = (function (_super) {
         // new EnterFrameTest();
         // new KeyboardManagerTest();
         // new TimeFormatTest();
-        // new MathUtilTest();
-        new TimeUtilTest();
+        new MathUtilTest(this.stage);
+        // new TimeUtilTest();
         // new Vector2DTest();
     };
     return Main;

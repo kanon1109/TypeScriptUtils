@@ -436,6 +436,73 @@ var cn;
                         return MathUtil.rds2dgs(radians);
                     return radians;
                 };
+                /**
+                 * 获取向量与向量之间的夹角
+                 * @param    originX 原点位置x
+                 * @param    originY 原点位置y
+                 * @param    targetX 目标位置x
+                 * @param    targetY 目标位置y
+                 * @param    degrees 指定是否返回角度值，默认为true
+                 * @reutrn   如果degrees为true，则返回向量夹角的角度值，否则返回向量夹角的弧度值。
+                 */
+                MathUtil.angleBetween2 = function (originX, originY, targetX, targetY, degrees) {
+                    if (degrees === void 0) { degrees = true; }
+                    var dx = (originX - targetX);
+                    var dy = (originY - targetY);
+                    var radians = Math.atan2(dy, dx);
+                    if (degrees)
+                        return MathUtil.rds2dgs(radians);
+                    return radians;
+                };
+                /**
+                 * 在数字后面格式化为 k，m，b，t，q，Q，s，S
+                 * @param	value		需要格式化的数字
+                 * @param	interval	保留小数点
+                 * @return	返回格式化后的字符串形式数字
+                 */
+                MathUtil.convertNumber = function (value, interval) {
+                    if (interval === void 0) { interval = .1; }
+                    var arr = ["k", "m", "b", "t", "q", "Q", "s", "S"];
+                    var num = Math.pow(10, 24);
+                    var multi = 1000;
+                    for (var i = arr.length - 1; i >= 0; --i) {
+                        if (value > num)
+                            return MathUtil.round((value / num), interval).toString() + arr[i];
+                        num /= multi;
+                    }
+                    return Math.round(value).toString();
+                };
+                /**
+                 * 缓动角度跟随
+                 */
+                MathUtil.rotateEase = function (originRot, originX, originY, targetX, targetY, ease) {
+                    if (ease === void 0) { ease = .2; }
+                    var dx = (originX - targetX);
+                    var dy = (originY - targetY);
+                    var r = Math.atan2(dy, dx); //通过两点间的角度获取
+                    var targetRotation = r * 180 / Math.PI;
+                    if (targetRotation > originRot + 180)
+                        targetRotation -= 360;
+                    if (targetRotation < originRot - 180)
+                        targetRotation += 360;
+                    return (targetRotation - originRot) * ease;
+                };
+                /**
+                 * 给定两个有公共端点的矢量 (px0, py0, px1, py1), (px0, py0, px2, py2) 获取两个点的位置关系
+                 * @reutrn   如果为>0，说明在顺时针位置（右边），
+                 *           如果为<0，在逆时针（左边）
+                 *           如果为==0，则p1和p2共线，方向相同或相反
+                 */
+                MathUtil.checkPointDirection = function (px0, py0, px1, py1, px2, py2) {
+                    //以p0为原点建立坐标系，那么P1 = p1 - p0, P2 = p2 - p0,
+                    //它们的叉积t = (p1 - p0) * (p2 - p0) = (px1 - px0) * (py2 - py0) - (px2 - px0) * (py1 - py0);
+                    var t = (px1 - px0) * (py2 - py0) - (px2 - px0) * (py1 - py0);
+                    if (t > 0)
+                        return 1;
+                    else if (t < 0)
+                        return -1;
+                    return 0;
+                };
                 return MathUtil;
             }());
             utils.MathUtil = MathUtil;
