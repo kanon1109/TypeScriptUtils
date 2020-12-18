@@ -191,6 +191,39 @@ var cn;
                     return new Vector2D(x, y);
                 };
                 /**
+                 * 截取当前向量
+                 * @param	max
+                 * @return
+                 */
+                Vector2D.prototype.truncate = function (max) {
+                    this.length = Math.min(max, this.length);
+                    return this;
+                };
+                /**
+                 * 反转向量
+                 * @return
+                 */
+                Vector2D.prototype.reverse = function () {
+                    this._x = -this._x;
+                    this._y = -this._y;
+                    return this;
+                };
+                /**
+                 * 差积   差积=0为垂直
+                 * @param	v2
+                 * @return
+                 */
+                Vector2D.prototype.crossProd = function (v2) {
+                    return this._x * v2.y - this._y * v2.x;
+                };
+                /**
+                 * 获取这个向量的方向
+                 * @return int 如果在左边返回-1. 如果在右边返回+1.
+                 */
+                Vector2D.prototype.sign = function (v2) {
+                    return this.perp.dot(v2) < 0 ? -1 : 1;
+                };
+                /**
                  * 描述向量实例的字符窜
                  */
                 Vector2D.prototype.tostring = function () {

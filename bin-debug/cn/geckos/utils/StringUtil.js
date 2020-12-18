@@ -207,6 +207,18 @@ var cn;
                     }
                     return newStr;
                 };
+                /**{0} 字符替换   */
+                StringUtil.strReplace = function (str, rStr) {
+                    var i = 0, len = rStr.length;
+                    for (; i < len; i++) {
+                        if (rStr[i] == null || rStr[i] == "") {
+                            rStr[i] = "无";
+                            console.log("not word ", str);
+                        }
+                        str = str.replace("{" + i + "}", rStr[i]);
+                    }
+                    return str;
+                };
                 /**
                  * 特殊符号字符串
                  */
