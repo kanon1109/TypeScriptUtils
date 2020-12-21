@@ -645,13 +645,16 @@ export class MathUtil
         if (!isSegment) {
             p = new egret.Point(start.x + t * dx, start.y + t * dy);
         }
-        else {
-            if (d) {
+        else 
+        {
+            if (d) 
+            {
                 if (t < 0) p = start;
                 else if (t > 1) p = end;
                 else p = new egret.Point(start.x + t * dx, start.y + t * dy);
             }
-            else {
+            else 
+            {
                 p = start;
             }
         }
@@ -659,5 +662,82 @@ export class MathUtil
         dy = point.y - p.y;
         return Math.sqrt(dx*dx + dy*dy);
     }
+
+
+    /**
+	 * 根据坐标计算这个坐标形成的图形的尺寸高宽
+	 * @param	path 路径列表 二维数组[[x,y],[x,y]]
+	 * @return  尺寸对象
+	 */
+	public static mathSizeByPath(path:number[][]):any
+	{
+		let minX:number;
+		let maxX:number;
+		let minY:number;
+		let maxY:number;
+		let length:number = path.length;
+		for (let i:number = 0; i < length; i += 1) 
+		{
+			let posX:number = path[i][0];
+			let posY:number = path[i][1];
+			if (isNaN(minX))
+				minX = posX;
+			else if (posX < minX)
+				minX = posX;
+				
+			if (isNaN(maxX))
+				maxX = posX;
+			else if (posX > maxX)
+				maxX = posX;
+				
+			if (isNaN(minY))
+				minY = posY;
+			else if (posY < minY)
+				minY = posY;
+				
+			if (isNaN(maxY))
+				maxY = posY;
+			else if (posY > maxY)
+				maxY = posY;
+		}
+		let width:number = (maxX - minX);
+		let height:number = (maxY - minY);
+		return { "width":width, "height":height, 
+				 "minX":minX, "maxX":maxX,
+				 "minY":minY, "maxY":maxY };
+	}
+	
+	/**
+	 * 查找多边形的中心
+	 * @param	vs    	   多边形顶点坐标
+	 * @param	count      顶点数量
+	 * @return  中心坐标
+	 */
+    public static findCentroid(vs:egret.Point[], count:number):egret.Point
+	{
+		let c:egret.Point = new egret.Point();
+		let area:number = 0.0;
+		let p1X:number = 0.0;
+		let p1Y:number = 0.0;
+		let inv3:number = 1.0 / 3.0;
+		for (let i:number = 0; i < count; ++i)
+		{
+			let p2:egret.Point = vs[i];
+			let p3:egret.Point = i + 1 < count ? vs[i + 1] : vs[0];
+			let e1X:number = p2.x - p1X;
+			let e1Y:number = p2.y - p1Y;
+			let e2X:number = p3.x - p1X;
+			let e2Y:number = p3.y - p1Y;
+			let d:number = (e1X * e2Y - e1Y * e2X);
+			let triangleArea:number = 0.5 * d;
+			area += triangleArea;
+			c.x += triangleArea * inv3 * (p1X + p2.x + p3.x);
+			c.y += triangleArea * inv3 * (p1Y + p2.y + p3.y);
+		}
+		c.x *= 1.0 / area;
+		c.y *= 1.0 / area;
+		return c;
+	}
+
 }
 }

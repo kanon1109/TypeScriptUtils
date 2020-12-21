@@ -531,6 +531,41 @@ var cn;
                     }
                     return flag;
                 };
+                /**
+                 * 计算点到直线的距离。如果这是一条线段并且垂足不在线段内，则会计算点到线段端点的距离。
+                 * @method pointLineDistance
+                 * @param point - The point
+                 * @param start - The start point of line
+                 * @param end - The end point of line
+                 * @param isSegment - whether this line is a segment
+                 * @return {number}
+                 */
+                MathUtil.pointLineDistance = function (point, start, end, isSegment) {
+                    var dx = end.x - start.x;
+                    var dy = end.y - start.y;
+                    var d = dx * dx + dy * dy;
+                    var t = ((point.x - start.x) * dx + (point.y - start.y) * dy) / d;
+                    var p;
+                    if (!isSegment) {
+                        p = new egret.Point(start.x + t * dx, start.y + t * dy);
+                    }
+                    else {
+                        if (d) {
+                            if (t < 0)
+                                p = start;
+                            else if (t > 1)
+                                p = end;
+                            else
+                                p = new egret.Point(start.x + t * dx, start.y + t * dy);
+                        }
+                        else {
+                            p = start;
+                        }
+                    }
+                    dx = point.x - p.x;
+                    dy = point.y - p.y;
+                    return Math.sqrt(dx * dx + dy * dy);
+                };
                 return MathUtil;
             }());
             utils.MathUtil = MathUtil;
