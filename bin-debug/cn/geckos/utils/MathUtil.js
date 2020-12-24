@@ -566,6 +566,72 @@ var cn;
                     dy = point.y - p.y;
                     return Math.sqrt(dx * dx + dy * dy);
                 };
+                /**
+                 * 根据坐标计算这个坐标形成的图形的尺寸高宽
+                 * @param	path 路径列表 二维数组[[x,y],[x,y]]
+                 * @return  尺寸对象
+                 */
+                MathUtil.mathSizeByPath = function (path) {
+                    var minX;
+                    var maxX;
+                    var minY;
+                    var maxY;
+                    var length = path.length;
+                    for (var i = 0; i < length; i += 1) {
+                        var posX = path[i][0];
+                        var posY = path[i][1];
+                        if (isNaN(minX))
+                            minX = posX;
+                        else if (posX < minX)
+                            minX = posX;
+                        if (isNaN(maxX))
+                            maxX = posX;
+                        else if (posX > maxX)
+                            maxX = posX;
+                        if (isNaN(minY))
+                            minY = posY;
+                        else if (posY < minY)
+                            minY = posY;
+                        if (isNaN(maxY))
+                            maxY = posY;
+                        else if (posY > maxY)
+                            maxY = posY;
+                    }
+                    var width = (maxX - minX);
+                    var height = (maxY - minY);
+                    return { "width": width, "height": height,
+                        "minX": minX, "maxX": maxX,
+                        "minY": minY, "maxY": maxY };
+                };
+                /**
+                 * 查找多边形的中心
+                 * @param	vs    	   多边形顶点坐标
+                 * @param	count      顶点数量
+                 * @return  中心坐标
+                 */
+                MathUtil.findCentroid = function (vs, count) {
+                    var c = new egret.Point();
+                    var area = 0.0;
+                    var p1X = 0.0;
+                    var p1Y = 0.0;
+                    var inv3 = 1.0 / 3.0;
+                    for (var i = 0; i < count; ++i) {
+                        var p2 = vs[i];
+                        var p3 = i + 1 < count ? vs[i + 1] : vs[0];
+                        var e1X = p2.x - p1X;
+                        var e1Y = p2.y - p1Y;
+                        var e2X = p3.x - p1X;
+                        var e2Y = p3.y - p1Y;
+                        var d = (e1X * e2Y - e1Y * e2X);
+                        var triangleArea = 0.5 * d;
+                        area += triangleArea;
+                        c.x += triangleArea * inv3 * (p1X + p2.x + p3.x);
+                        c.y += triangleArea * inv3 * (p1Y + p2.y + p3.y);
+                    }
+                    c.x *= 1.0 / area;
+                    c.y *= 1.0 / area;
+                    return c;
+                };
                 return MathUtil;
             }());
             utils.MathUtil = MathUtil;

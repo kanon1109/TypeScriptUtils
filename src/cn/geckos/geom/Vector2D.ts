@@ -230,17 +230,17 @@ export class Vector2D
     }
 
     /**
-     * 差积   差积=0为垂直
+     * 叉乘 
      * @param	v2
-     * @return
+     * @return  如果在左边返回-1. 如果在右边返回+1.叉乘=0同一条线上
      */
-    public crossProd(v2: Vector2D): Number 
+    public crossProd(v2: Vector2D): number 
     {
         return this._x * v2.y - this._y * v2.x;
     }
 	
 	/**
-	 * 获取这个向量的方向
+	 * 点积法获取这个向量的方向
 	 * @return int 如果在左边返回-1. 如果在右边返回+1.
 	 */
 	public sign(v2:Vector2D):number

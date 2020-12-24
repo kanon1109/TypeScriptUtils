@@ -5,7 +5,7 @@ import Vector2D = cn.geckos.geom.Vector2D;
 import LineSegment = cn.geckos.geom.LineSegment;
 class Vector2DTest
 {
-    public constructor()
+    public constructor(stage:egret.DisplayObjectContainer)
     {
         var v2d:Vector2D = new Vector2D(0, 0);
         var v2d2:Vector2D = new Vector2D(125, 234);
@@ -26,6 +26,23 @@ class Vector2DTest
 
         console.log("getRelation :" + line1.getRelation(line2));
         
+
+        var v2d:Vector2D = new Vector2D(100, 400);
+        var v2d2:Vector2D = new Vector2D(320, 302);
+
+        let spt:egret.Sprite = new egret.Sprite();
+        stage.addChild(spt);
+
+        spt.graphics.lineStyle(1, 0xff0000);
+        spt.graphics.moveTo(0, 0);
+        spt.graphics.lineTo(v2d.x, v2d.y);
+        spt.graphics.drawCircle(v2d.x, v2d.y, 10);
+        spt.graphics.lineStyle(1, 0x00ff00);
+        spt.graphics.moveTo(0, 0);
+        spt.graphics.lineTo(v2d2.x, v2d2.y);
+        spt.graphics.drawCircle(v2d2.x, v2d2.y, 10);
+
+        console.log(v2d.crossProd(v2d2));
         
     }
 }

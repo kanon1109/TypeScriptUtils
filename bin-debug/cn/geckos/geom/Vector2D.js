@@ -209,7 +209,7 @@ var cn;
                     return this;
                 };
                 /**
-                 * 差积   差积=0为垂直
+                 * 叉乘   叉乘=0同一条线上
                  * @param	v2
                  * @return
                  */
@@ -217,7 +217,7 @@ var cn;
                     return this._x * v2.y - this._y * v2.x;
                 };
                 /**
-                 * 获取这个向量的方向
+                 * 点积法获取这个向量的方向
                  * @return int 如果在左边返回-1. 如果在右边返回+1.
                  */
                 Vector2D.prototype.sign = function (v2) {
