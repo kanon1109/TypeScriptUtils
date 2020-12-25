@@ -209,9 +209,9 @@ var cn;
                     return this;
                 };
                 /**
-                 * 叉乘   叉乘=0同一条线上
+                 * 叉乘
                  * @param	v2
-                 * @return
+                 * @return  如果在左边返回-1. 如果在右边返回+1.叉乘=0同一条线上
                  */
                 Vector2D.prototype.crossProd = function (v2) {
                     return this._x * v2.y - this._y * v2.x;

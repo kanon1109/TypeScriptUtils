@@ -34,7 +34,15 @@ var MathUtilTest = (function () {
         s.graphics.moveTo(x0, y0);
         s.graphics.lineTo(x2, y2);
         console.log(cn.geckos.utils.MathUtil.checkPointDirection(x0, y0, x1, y1, x2, y2));
+        this.spt = new egret.Sprite();
+        stage.addChild(this.spt);
+        cn.geckos.utils.MathUtil.paraCurve(100, 200, 10, -20, .98, 100, .8, this.back.bind(this));
     }
+    MathUtilTest.prototype.back = function (tx, ty) {
+        console.log("tx, ty", tx, ty);
+        this.spt.graphics.lineStyle(1, 0xff0000);
+        this.spt.graphics.drawCircle(tx, ty, 2);
+    };
     return MathUtilTest;
 }());
 __reflect(MathUtilTest.prototype, "MathUtilTest");

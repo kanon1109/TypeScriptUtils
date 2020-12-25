@@ -632,6 +632,32 @@ var cn;
                     c.y *= 1.0 / area;
                     return c;
                 };
+                /**
+                 * 瞄准线公式
+                 * s = v_x * t
+                 * h = v_y * t + 0.5 * a * t * t
+                 * @param	sx    	起始x
+                 * @param	sy      起始y
+                 * @param	vx    	向量x
+                 * @param	vy      向量y
+                 * @param	a       加速度
+                 * @param	count   数量
+                 * @param	dt      时间间隔
+                 * @param	back    回调
+                 */
+                MathUtil.paraCurve = function (sx, sy, vx, vy, a, count, dt, back) {
+                    if (dt === void 0) { dt = .1; }
+                    // s = v_x * t
+                    // h = v_y * t + 0.5 * a * t * t
+                    for (var i = 0; i < count; i++) {
+                        var time = dt * i;
+                        console.log(time);
+                        var tx = sx + vx * time;
+                        var ty = sy + vy * time + .5 * a * time * time;
+                        if (back)
+                            back.call(this, tx, ty);
+                    }
+                };
                 return MathUtil;
             }());
             utils.MathUtil = MathUtil;

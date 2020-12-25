@@ -739,5 +739,38 @@ export class MathUtil
 		return c;
 	}
 
+    /**
+     * 瞄准线公式
+     * s = v_x * t
+     * h = v_y * t + 0.5 * a * t * t
+     * @param	sx    	起始x
+	 * @param	sy      起始y
+     * @param	vx    	向量x
+	 * @param	vy      向量y
+	 * @param	a       加速度
+	 * @param	count   数量
+	 * @param	dt      时间间隔
+     * @param	back    回调
+     */
+    public static paraCurve(sx:number, sy:number, 
+                     vx:number, vy:number, 
+                     a:number,
+                     count:number, 
+                     dt:number=.1,
+                     back?:(x:number, y:number)=>void):void
+    {
+        // s = v_x * t
+        // h = v_y * t + 0.5 * a * t * t
+        for(let i:number = 0; i < count; i++)
+        {
+            let time:number = dt * i;
+            console.log(time);
+            let tx:number = sx + vx * time;
+            let ty:number = sy + vy * time + .5 * a * time * time;
+            if(back) back.call(this, tx, ty);
+        }
+
+    }
+
 }
 }

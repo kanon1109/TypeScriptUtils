@@ -3,6 +3,7 @@
  */
 class MathUtilTest
 {
+    private spt:egret.Sprite;
     public constructor(stage:egret.Stage)
     {
         console.log("rds2dgs():" + cn.geckos.utils.MathUtil.rds2dgs(Math.PI / 2));
@@ -38,5 +39,15 @@ class MathUtilTest
         s.graphics.lineTo(x2, y2);
 
         console.log(cn.geckos.utils.MathUtil.checkPointDirection(x0, y0, x1, y1, x2, y2));
+        this.spt = new egret.Sprite();
+        stage.addChild(this.spt);
+        cn.geckos.utils.MathUtil.paraCurve(100, 200, 10, -20, .98, 100, .8, this.back.bind(this));
+    }
+
+    private back(tx:number, ty:number):void
+    {
+        console.log("tx, ty", tx, ty);
+        this.spt.graphics.lineStyle(1, 0xff0000);
+        this.spt.graphics.drawCircle(tx, ty, 2);
     }
 }
