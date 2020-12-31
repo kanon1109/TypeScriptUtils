@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "bg_jpg,egret_icon_png,description_json,bee_png,blackHole_png,blood_png,m1_json,m1_png,mc_png,water_jpg,f3_png,f1_png,f2_png,guaiwu208_png",
+			"keys": "bg_jpg,egret_icon_png,description_json,bee_png,blackHole_png,blood_png,m1_json,m1_png,mc_png,water_jpg,f3_png,f1_png,f2_png,guaiwu208_png,bg_attr_jpg",
 			"name": "preload"
 		}
 	],
@@ -75,6 +75,11 @@
 			"name": "guaiwu208_png",
 			"type": "image",
 			"url": "assets/guaiwu208.png"
+		},
+		{
+			"name": "bg_attr_jpg",
+			"type": "image",
+			"url": "assets/bg_attr.jpg"
 		}
 	]
 }
