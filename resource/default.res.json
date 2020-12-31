@@ -1,23 +1,80 @@
 {
-	"groups":[
-	{
-		"keys":"bg_jpg,egret_icon_png,description_json",
-		"name":"preload"
-	}],
-	"resources":[
-	{
-		"name":"bg_jpg",
-		"type":"image",
-		"url":"assets/bg.jpg"
-	},
-	{
-		"name":"egret_icon_png",
-		"type":"image",
-		"url":"assets/egret_icon.png"
-	},
-	{
-		"name":"description_json",
-		"type":"json",
-		"url":"config/description.json"
-	}]
+	"groups": [
+		{
+			"keys": "bg_jpg,egret_icon_png,description_json,bee_png,blackHole_png,blood_png,m1_json,m1_png,mc_png,water_jpg,f3_png,f1_png,f2_png,guaiwu208_png",
+			"name": "preload"
+		}
+	],
+	"resources": [
+		{
+			"name": "bg_jpg",
+			"type": "image",
+			"url": "assets/bg.jpg"
+		},
+		{
+			"name": "egret_icon_png",
+			"type": "image",
+			"url": "assets/egret_icon.png"
+		},
+		{
+			"name": "description_json",
+			"type": "json",
+			"url": "config/description.json"
+		},
+		{
+			"name": "bee_png",
+			"type": "image",
+			"url": "assets/bee.png"
+		},
+		{
+			"name": "blackHole_png",
+			"type": "image",
+			"url": "assets/blackHole.png"
+		},
+		{
+			"name": "blood_png",
+			"type": "image",
+			"url": "assets/blood.png"
+		},
+		{
+			"name": "m1_json",
+			"type": "json",
+			"url": "assets/m1.json"
+		},
+		{
+			"name": "m1_png",
+			"type": "image",
+			"url": "assets/m1.png"
+		},
+		{
+			"name": "mc_png",
+			"type": "image",
+			"url": "assets/mc.png"
+		},
+		{
+			"name": "water_jpg",
+			"type": "image",
+			"url": "assets/water.jpg"
+		},
+		{
+			"name": "f3_png",
+			"type": "image",
+			"url": "assets/f3.png"
+		},
+		{
+			"name": "f1_png",
+			"type": "image",
+			"url": "assets/f1.png"
+		},
+		{
+			"name": "f2_png",
+			"type": "image",
+			"url": "assets/f2.png"
+		},
+		{
+			"name": "guaiwu208_png",
+			"type": "image",
+			"url": "assets/guaiwu208.png"
+		}
+	]
 }

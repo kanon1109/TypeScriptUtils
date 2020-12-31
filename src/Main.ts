@@ -102,11 +102,23 @@ class Main extends egret.DisplayObjectContainer {
         // new QuadraticBezierCurveTest(this.stage);
         // new LineCurveTest(this.stage);
         // new SplineCurveTest(this.stage);
-        new EllipseCurveTest(this.stage);
-        
+        // new EllipseCurveTest(this.stage);
         // new TimeUtilTest();
-
-        
         // new Vector2DTest(this);
+
+        // this.addChild(new ChainTest());
+        // this.addChild(new RopeTest());
+        // this.addChild(new TreeTest());
+        // this.addChild(new OilPaintingTest());
+        this.addChild(new BloodSplatterTest());
+        // this.addChild(new BeeBehaviorTest());
+        // this.addChild(new BlackHoleTest());
+        // this.addChild(new TextEffectTest());
+        // this.addChild(new WaterWaveTest());
+        // this.addChild(new RotationEasingTest());
+        // this.addChild(new WingmanMotionTest());
+        // this.addChild(new SlotsTest());
+        // this.addChild(new ResidueShadowTest());
+        // this.addChild(new FlameGunTest());
     }
 }
