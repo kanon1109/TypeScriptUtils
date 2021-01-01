@@ -1,11 +1,10 @@
-class RadarMapTest extends  egret.Sprite
+class RadarMapTest extends egret.Sprite
 {
 	private raderMap:effect.RadarMap;
 	public constructor() 
 	{
 		super();
 		this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
-		
 	}
 
 	private onAddToStage():void

@@ -111,7 +111,8 @@ class Main extends egret.DisplayObjectContainer {
         // this.addChild(new TreeTest());
         // this.addChild(new OilPaintingTest());
         // this.addChild(new BloodSplatterTest());
-        this.addChild(new RadarMapTest());
+        // this.addChild(new RadarMapTest());
+        this.addChild(new SnakeTest());
         // this.addChild(new BeeBehaviorTest());
         // this.addChild(new BlackHoleTest());
         // this.addChild(new TextEffectTest());
