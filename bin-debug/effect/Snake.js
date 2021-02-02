@@ -90,7 +90,7 @@ var effect;
                 this.now -= Snake.CELL_TIME;
             }
         };
-        Snake.CELL_TIME = 0.01;
+        Snake.CELL_TIME = 0.02;
         // 蛇身大小
         Snake.SNAKE_CELL_SIZE = 30;
         // 蛇身数量

@@ -87,7 +87,7 @@ var effect;
                 return;
             var length = this.pointDataList.length;
             var angle = 360 / this.count;
-            var curAngle = 90;
+            var curAngle = -90;
             for (var i = 0; i < length; i++) {
                 var value = 0;
                 if (i < dataList.length)
@@ -101,7 +101,7 @@ var effect;
                 var x = Math.cos(rds) * r;
                 var y = Math.sin(rds) * r;
                 var point = this.pointDataList[i];
-                curAngle -= angle;
+                curAngle += angle;
                 if (this.isShowAnim) {
                     egret.Ticker.getInstance().register(this.loopHandler, this);
                     if (i == length - 1)

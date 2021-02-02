@@ -103,7 +103,7 @@ export class RadarMap
 		if (!dataList || dataList.length == 0) return;
 		let length:number = this.pointDataList.length;
 		let angle:number = 360 / this.count;
-		let curAngle:number = 90;
+		let curAngle:number = -90;
 		for (let i:number = 0; i < length; i++) 
 		{
 			let value:number = 0;
@@ -115,7 +115,7 @@ export class RadarMap
 			let x:number = Math.cos(rds) * r;
 			let y:number = Math.sin(rds) * r;
 			let point:egret.Point = this.pointDataList[i];
-			curAngle -= angle;
+			curAngle += angle;
 			if (this.isShowAnim) 
 			{
 				egret.Ticker.getInstance().register(this.loopHandler, this);
