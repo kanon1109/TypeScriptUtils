@@ -155,6 +155,21 @@ var utils;
                 return new Date();
             }
         };
+        /**
+         * 获取年龄
+         */
+        TimeUtil.getAges = function (str) {
+            var r = str.match(/^(\d{1,4})(-|\/)(\d{1,2})\2(\d{1,2})$/);
+            if (r == null)
+                return 0;
+            var d = new Date(r[1], r[3] - 1, r[4]);
+            if (d.getFullYear() == r[1] &&
+                (d.getMonth() + 1) == r[3] && d.getDate() == r[4]) {
+                var y = new Date().getFullYear();
+                return y - r[1];
+            }
+            return 0;
+        };
         return TimeUtil;
     }());
     utils.TimeUtil = TimeUtil;

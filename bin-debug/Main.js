@@ -157,7 +157,7 @@ var Main = (function (_super) {
         // new TimeFormatTest();
         // new MathUtilTest(this.stage);
         // new CubicBezierCurveTest(this.stage);
-        // new QuadraticBezierCurveTest(this.stage);
+        new QuadraticBezierCurveTest(this.stage);
         // new LineCurveTest(this.stage);
         // new SplineCurveTest(this.stage);
         // new EllipseCurveTest(this.stage);
@@ -170,7 +170,7 @@ var Main = (function (_super) {
         // this.addChild(new BloodSplatterTest());
         // this.addChild(new RadarMapTest());
         // this.addChild(new SnakeTest());
-        this.addChild(new BeeBehaviorTest());
+        // this.addChild(new BeeBehaviorTest());
         // this.addChild(new BlackHoleTest());
         // this.addChild(new TextEffectTest());
         // this.addChild(new WaterWaveTest());
