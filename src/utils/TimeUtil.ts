@@ -168,5 +168,14 @@ export class TimeUtil
 		} 
 		return 0;
 	} 
+	
+	/**
+	 * 获取某月份的天数
+	 */
+	public static getMonthDays(year:number, month:number):number
+	{
+		let d:Date = new Date(year, month, 0)
+		return d.getDate()
+	}
 }
 }
