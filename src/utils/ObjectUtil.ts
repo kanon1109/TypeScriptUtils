@@ -24,5 +24,46 @@ export class ObjectUtil
 		}
 		return c;
 	}
+	
+	/**
+	 * 获取对象长度
+	 * @param	o
+	 * @return
+	 */
+	/**
+	 * 获取对象长度
+	 * @param	o
+	 * @return
+	 */
+	public static getLength(o:Object):number
+	{
+		if(!o) return 0;
+		let count:number = 0;
+		for (var key in o)
+		{
+			count++;
+		}
+		return count;
+	}
+	
+	/**
+	 * 转换为数组
+	 * @param	obj	需要转换的对象
+	 * @return	转换后的数组
+	 */
+	public static toArray(obj:Object):any[]
+	{
+		if (!obj) return null;
+		let newArr:any[] = [];
+		for (var key in obj) 
+		{
+			if (obj.hasOwnProperty(key)) 
+			{
+				var element = obj[key];
+				newArr.push(obj[key]);
+			}
+		}
+		return newArr;
+	}
 }
 }
