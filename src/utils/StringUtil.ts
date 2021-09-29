@@ -269,5 +269,46 @@ export class StringUtil
 		}
 		return str
 	}
+
+    /**
+     * 移除json字符串中egret类信息
+     */
+    public static cleanClassDesc(json: string): string {
+        //var s = "\"wh\":21,\"__class__\":\"vo.GuestVo\",\"__types__\":[\"vo.GuestVo\"]}"
+        let idx = json.indexOf(',"__class__');
+        while (idx > 0) {
+            let end = json.indexOf(']', idx);
+            json = json.substr(0, idx) + json.substr(end + 1);
+            idx = json.indexOf(',"__class__');
+        }
+        return json;
+    }
+
+    /**
+     * 排序中文字符串
+     */
+    public static sortChinese(arr:string[]):string[]
+    {
+        let resultArray:string[] = arr.sort((p1:string, p2:string)=>{
+            return p1.localeCompare(p2,"zh");
+        })
+        return resultArray;
+    }
+
+    /**
+     * 根据数字生产26进制的字母
+     */
+    public static createCellPos(n:number):string
+    {
+        var ordA = 'A'.charCodeAt(0);
+        var ordZ = 'Z'.charCodeAt(0);
+        var len = ordZ - ordA + 1;
+        var s = "";
+        while( n >= 0 ) {
+            s = String.fromCharCode(n % len + ordA) + s;
+            n = Math.floor(n / len) - 1;
+        }
+        return s;
+    }
 }
 }
