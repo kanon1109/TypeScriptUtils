@@ -310,5 +310,17 @@ export class StringUtil
         }
         return s;
     }
+
+    // 字符串转ArrayBuffer
+	private stringToArrayBuffer(s:string):ArrayBuffer 
+	{
+		let buf:ArrayBuffer = new ArrayBuffer(s.length);
+		let view:Uint8Array = new Uint8Array(buf);
+		for (let i:number=0; i < s.length; ++i)
+		{
+			view[i] = s.charCodeAt(i) & 0xFF;
+		} 
+		return buf;
+	}
 }
 }
