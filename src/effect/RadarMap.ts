@@ -1,20 +1,20 @@
 /**
  * 雷达图
  */
-module effect 
+module utils 
 {
 export class RadarMap
 {
 	//动画间隔(毫秒)
-	private _duration:number = 200;
+	private _duration:number;
 	//是否显示过渡动画
 	public isShowAnim:boolean = true;
 	//数值最大值
 	public maxValue:number;
 	//数据填充颜色
-	public dataFillColor:number = 0xFF0000;
+	public fillColor:number = 0xFF0000;
 	//数据线段颜色
-	public dataLineColor:number = 0xFF0000;
+	public lineColor:number = 0xFF0000;
 	//图形线段颜色
 	public graphLineColor:number = 0xFFFFFF;
 	//数据点的半径
@@ -38,9 +38,8 @@ export class RadarMap
 		this._count = 6;
 		this._radius = 100;
 		this.maxValue = 100;
-		this._duration = 200;
+		this._duration = 400;
 		this.fillCanvas = fillCanvas;
-		this.fillCanvas.alpha = .5;
 		this.lineCanvas = lineCanvas;
 		this.initGraphDataPoint();
 	}
@@ -59,7 +58,7 @@ export class RadarMap
 		for (let i:number = 0; i < this._count; i++) 
 		{
 			let p:egret.Point = new egret.Point();
-			let rds:number = utils.MathUtil.dgs2rds(curAngle);
+			let rds:number = MathUtil.dgs2rds(curAngle);
 			p.x = Math.cos(rds) * this._radius;
 			p.y = Math.sin(rds) * this._radius;
 			curAngle -= angle;
@@ -110,7 +109,7 @@ export class RadarMap
 			if (i < dataList.length) value = dataList[i];
 			if (value < 0) value = 0;
 			else if (value > this.maxValue) value = this.maxValue;
-			let rds:number = utils.MathUtil.dgs2rds(curAngle);
+			let rds:number = MathUtil.dgs2rds(curAngle);
 			let r:number = this._radius * (value / this.maxValue);
 			let x:number = Math.cos(rds) * r;
 			let y:number = Math.sin(rds) * r;
@@ -118,9 +117,9 @@ export class RadarMap
 			curAngle += angle;
 			if (this.isShowAnim) 
 			{
-				egret.Ticker.getInstance().register(this.loopHandler, this);
+				// egret.Ticker.getInstance().register(this.loopHandler, this);
 				if (i == length - 1)
-					egret.Tween.get(point).to({x:x, y:y}, this._duration, egret.Ease.sineOut).call(this.completeHandler, this);
+					egret.Tween.get(point, {onChange:this.loopHandler, onChangeObj:this}).to({x:x, y:y}, this._duration, egret.Ease.sineOut).call(this.completeHandler, this);
 				else
 					egret.Tween.get(point).to({x:x, y:y}, this._duration, egret.Ease.sineOut);
 			}
@@ -136,16 +135,16 @@ export class RadarMap
 	
 	private completeHandler():void
 	{
-		egret.Ticker.getInstance().unregister(this.loopHandler, this);
+		// egret.Ticker.getInstance().unregister(this.loopHandler, this);
 		this.loopHandler();
 	}
 
 	private loopHandler():void 
 	{
 		this.fillCanvas.graphics.clear();
-		this.fillCanvas.graphics.lineStyle(1, this.dataLineColor);
+		this.fillCanvas.graphics.lineStyle(1, this.lineColor);
 		let length:number = this.pointDataList.length;
-		this.fillCanvas.graphics.beginFill(this.dataFillColor)
+		this.fillCanvas.graphics.beginFill(this.fillColor)
 		for (let i:number = 0; i < length; i++) 
 		{
 			let point:egret.Point = this.pointDataList[i];
@@ -206,7 +205,7 @@ export class RadarMap
 	 */
 	public destroySelf():void
 	{
-		egret.Ticker.getInstance().unregister(this.loopHandler, this);
+		// egret.Ticker.getInstance().unregister(this.loopHandler, this);
 		let length:number = this.pointDataList.length;
 		for (let i:number = 0; i < length; i++) 
 		{

@@ -216,6 +216,51 @@ var utils;
             return str;
         };
         /**
+         * 移除json字符串中egret类信息
+         */
+        StringUtil.cleanClassDesc = function (json) {
+            //var s = "\"wh\":21,\"__class__\":\"vo.GuestVo\",\"__types__\":[\"vo.GuestVo\"]}"
+            var idx = json.indexOf(',"__class__');
+            while (idx > 0) {
+                var end = json.indexOf(']', idx);
+                json = json.substr(0, idx) + json.substr(end + 1);
+                idx = json.indexOf(',"__class__');
+            }
+            return json;
+        };
+        /**
+         * 排序中文字符串
+         */
+        StringUtil.sortChinese = function (arr) {
+            var resultArray = arr.sort(function (p1, p2) {
+                return p1.localeCompare(p2, "zh");
+            });
+            return resultArray;
+        };
+        /**
+         * 根据数字生产26进制的字母
+         */
+        StringUtil.createCellPos = function (n) {
+            var ordA = 'A'.charCodeAt(0);
+            var ordZ = 'Z'.charCodeAt(0);
+            var len = ordZ - ordA + 1;
+            var s = "";
+            while (n >= 0) {
+                s = String.fromCharCode(n % len + ordA) + s;
+                n = Math.floor(n / len) - 1;
+            }
+            return s;
+        };
+        // 字符串转ArrayBuffer
+        StringUtil.prototype.stringToArrayBuffer = function (s) {
+            var buf = new ArrayBuffer(s.length);
+            var view = new Uint8Array(buf);
+            for (var i = 0; i < s.length; ++i) {
+                view[i] = s.charCodeAt(i) & 0xFF;
+            }
+            return buf;
+        };
+        /**
          * 特殊符号字符串
          */
         StringUtil.specialSigns = [

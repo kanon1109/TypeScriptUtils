@@ -99,12 +99,15 @@ class Main extends egret.DisplayObjectContainer {
         // new TimeFormatTest();
         // new MathUtilTest(this.stage);
         // new CubicBezierCurveTest(this.stage);
-        new QuadraticBezierCurveTest(this.stage);
+        // new QuadraticBezierCurveTest(this.stage);
         // new LineCurveTest(this.stage);
         // new SplineCurveTest(this.stage);
         // new EllipseCurveTest(this.stage);
         // new TimeUtilTest();
         // new Vector2DTest(this);
+
+        let o = {"a":1, "b":true, "c":[1,{"d":111,"aaa":[12,12,12]},1], "e":{"aa":1,"bb":false}};
+        console.log(utils.ObjectUtil.clone(o));
 
         // this.addChild(new ChainTest());
         // this.addChild(new RopeTest());

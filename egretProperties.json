@@ -1,6 +1,6 @@
 {
-  "engineVersion": "5.2.26",
-  "compilerVersion": "5.2.26",
+  "engineVersion": "5.4.1",
+  "compilerVersion": "5.4.1",
   "template": {},
   "target": {
     "current": "web"
@@ -21,5 +21,8 @@
     {
       "name": "promise"
     }
-  ]
+  ],
+  "vivo": {
+    "usePlugin": true
+  }
 }

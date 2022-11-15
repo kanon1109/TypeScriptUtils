@@ -25,6 +25,42 @@ var utils;
             }
             return c;
         };
+        /**
+         * 获取对象长度
+         * @param	o
+         * @return
+         */
+        /**
+         * 获取对象长度
+         * @param	o
+         * @return
+         */
+        ObjectUtil.getLength = function (o) {
+            if (!o)
+                return 0;
+            var count = 0;
+            for (var key in o) {
+                count++;
+            }
+            return count;
+        };
+        /**
+         * 转换为数组
+         * @param	obj	需要转换的对象
+         * @return	转换后的数组
+         */
+        ObjectUtil.toArray = function (obj) {
+            if (!obj)
+                return null;
+            var newArr = [];
+            for (var key in obj) {
+                if (obj.hasOwnProperty(key)) {
+                    var element = obj[key];
+                    newArr.push(obj[key]);
+                }
+            }
+            return newArr;
+        };
         return ObjectUtil;
     }());
     utils.ObjectUtil = ObjectUtil;

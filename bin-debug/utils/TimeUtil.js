@@ -170,6 +170,13 @@ var utils;
             }
             return 0;
         };
+        /**
+         * 获取某月份的天数
+         */
+        TimeUtil.getMonthDays = function (year, month) {
+            var d = new Date(year, month, 0);
+            return d.getDate();
+        };
         return TimeUtil;
     }());
     utils.TimeUtil = TimeUtil;
