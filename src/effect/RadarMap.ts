@@ -38,7 +38,7 @@ export class RadarMap
 		this._count = 6;
 		this._radius = 100;
 		this.maxValue = 100;
-		this._duration = 400;
+		this._duration = 200;
 		this.fillCanvas = fillCanvas;
 		this.lineCanvas = lineCanvas;
 		this.initGraphDataPoint();
@@ -58,7 +58,7 @@ export class RadarMap
 		for (let i:number = 0; i < this._count; i++) 
 		{
 			let p:egret.Point = new egret.Point();
-			let rds:number = MathUtil.dgs2rds(curAngle);
+			let rds:number = utils.MathUtil.dgs2rds(curAngle);
 			p.x = Math.cos(rds) * this._radius;
 			p.y = Math.sin(rds) * this._radius;
 			curAngle -= angle;
@@ -109,7 +109,7 @@ export class RadarMap
 			if (i < dataList.length) value = dataList[i];
 			if (value < 0) value = 0;
 			else if (value > this.maxValue) value = this.maxValue;
-			let rds:number = MathUtil.dgs2rds(curAngle);
+			let rds:number = utils.MathUtil.dgs2rds(curAngle);
 			let r:number = this._radius * (value / this.maxValue);
 			let x:number = Math.cos(rds) * r;
 			let y:number = Math.sin(rds) * r;
