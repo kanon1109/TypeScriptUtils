@@ -71,6 +71,27 @@ var utils;
             timeNum *= 1000;
             return timeNum.toString();
         };
+        /**
+         * 获取一个时间范围内得所有日期数据
+         */
+        TimeFormat.getDateRange = function (startDate, endDate) {
+            var dataArr = [];
+            var weeks = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
+            while ((endDate.getTime() - startDate.getTime()) >= 0) {
+                var year = startDate.getFullYear();
+                var month = (startDate.getMonth() + 1).toString().length === 1 ? "0" + (startDate.getMonth() + 1).toString() : (startDate.getMonth() + 1).toString();
+                var day = startDate.getDate().toString().length === 1 ? "0" + startDate.getDate() : startDate.getDate().toString();
+                var week = weeks[startDate.getDay()];
+                var dataObj = {};
+                dataObj["year"] = year;
+                dataObj["date"] = month + "-" + day;
+                dataObj["week"] = week;
+                dataArr.push(dataObj);
+                startDate.setDate(startDate.getDate() + 1);
+            }
+            dataArr[0].week = "今天";
+            return dataArr;
+        };
         return TimeFormat;
     }());
     utils.TimeFormat = TimeFormat;

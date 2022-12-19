@@ -1,7 +1,7 @@
 /**
  * 雷达图
  */
-module utils 
+module effect 
 {
 export class RadarMap
 {

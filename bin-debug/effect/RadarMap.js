@@ -8,14 +8,12 @@ var effect;
 (function (effect) {
     var RadarMap = (function () {
         function RadarMap(fillCanvas, lineCanvas) {
-            //动画间隔(毫秒)
-            this._duration = 200;
             //是否显示过渡动画
             this.isShowAnim = true;
             //数据填充颜色
-            this.dataFillColor = 0xFF0000;
+            this.fillColor = 0xFF0000;
             //数据线段颜色
-            this.dataLineColor = 0xFF0000;
+            this.lineColor = 0xFF0000;
             //图形线段颜色
             this.graphLineColor = 0xFFFFFF;
             //数据点的半径
@@ -25,7 +23,6 @@ var effect;
             this.maxValue = 100;
             this._duration = 200;
             this.fillCanvas = fillCanvas;
-            this.fillCanvas.alpha = .5;
             this.lineCanvas = lineCanvas;
             this.initGraphDataPoint();
         }
@@ -103,9 +100,9 @@ var effect;
                 var point = this.pointDataList[i];
                 curAngle += angle;
                 if (this.isShowAnim) {
-                    egret.Ticker.getInstance().register(this.loopHandler, this);
+                    // egret.Ticker.getInstance().register(this.loopHandler, this);
                     if (i == length - 1)
-                        egret.Tween.get(point).to({ x: x, y: y }, this._duration, egret.Ease.sineOut).call(this.completeHandler, this);
+                        egret.Tween.get(point, { onChange: this.loopHandler, onChangeObj: this }).to({ x: x, y: y }, this._duration, egret.Ease.sineOut).call(this.completeHandler, this);
                     else
                         egret.Tween.get(point).to({ x: x, y: y }, this._duration, egret.Ease.sineOut);
                 }
@@ -118,14 +115,14 @@ var effect;
                 this.loopHandler();
         };
         RadarMap.prototype.completeHandler = function () {
-            egret.Ticker.getInstance().unregister(this.loopHandler, this);
+            // egret.Ticker.getInstance().unregister(this.loopHandler, this);
             this.loopHandler();
         };
         RadarMap.prototype.loopHandler = function () {
             this.fillCanvas.graphics.clear();
-            this.fillCanvas.graphics.lineStyle(1, this.dataLineColor);
+            this.fillCanvas.graphics.lineStyle(1, this.lineColor);
             var length = this.pointDataList.length;
-            this.fillCanvas.graphics.beginFill(this.dataFillColor);
+            this.fillCanvas.graphics.beginFill(this.fillColor);
             for (var i = 0; i < length; i++) {
                 var point = this.pointDataList[i];
                 if (i == 0)
@@ -197,7 +194,7 @@ var effect;
          * 销毁
          */
         RadarMap.prototype.destroySelf = function () {
-            egret.Ticker.getInstance().unregister(this.loopHandler, this);
+            // egret.Ticker.getInstance().unregister(this.loopHandler, this);
             var length = this.pointDataList.length;
             for (var i = 0; i < length; i++) {
                 var point = this.pointDataList[i];

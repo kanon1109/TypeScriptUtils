@@ -69,5 +69,28 @@ export class TimeFormat
         timeNum *= 1000;
         return timeNum.toString();
     }
+
+    /**
+     * 获取一个时间范围内得所有日期数据
+     */
+    public static getDateRange(startDate:Date, endDate:Date):any[]
+    {
+        let dataArr:any[] = []
+		let weeks:string[] = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"]
+		while ((endDate.getTime() - startDate.getTime()) >= 0) {
+			let year:number = startDate.getFullYear()
+			let month:string = (startDate.getMonth() + 1).toString().length === 1 ? "0" + (startDate.getMonth() + 1).toString() : (startDate.getMonth() + 1).toString()
+			let day:string = startDate.getDate().toString().length === 1 ? "0" + startDate.getDate() : startDate.getDate().toString()
+			let week:string = weeks[startDate.getDay()]
+			let dataObj:any = {}
+			dataObj["year"] = year
+			dataObj["date"] = month + "-" + day
+			dataObj["week"] = week
+			dataArr.push(dataObj)
+			startDate.setDate(startDate.getDate() + 1)
+		}
+		dataArr[0].week = "今天";
+        return dataArr;
+    }
 }
 }
