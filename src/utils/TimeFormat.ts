@@ -75,7 +75,7 @@ export class TimeFormat
      */
     public static getDateRange(startDate:Date, endDate:Date):any[]
     {
-        let dataArr:any[] = []
+        let dateArr:any[] = []
 		let weeks:string[] = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"]
 		while ((endDate.getTime() - startDate.getTime()) >= 0) {
 			let year:number = startDate.getFullYear()
@@ -86,11 +86,11 @@ export class TimeFormat
 			dataObj["year"] = year
 			dataObj["date"] = month + "-" + day
 			dataObj["week"] = week
-			dataArr.push(dataObj)
+			dateArr.push(dataObj)
 			startDate.setDate(startDate.getDate() + 1)
 		}
-		dataArr[0].week = "今天";
-        return dataArr;
+		dateArr[0].week = "今天";
+        return dateArr;
     }
 }
 }
