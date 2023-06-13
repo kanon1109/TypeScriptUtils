@@ -322,5 +322,64 @@ export class StringUtil
 		} 
 		return buf;
 	}
+
+    /**
+     * 头部填充num
+     * @param	str    	    目标字符串
+     * @param	length    	填充完的长度
+	 * @param	num         填充的数值
+     */
+    public static padStart(str:string, length:number, num:number):string
+    {
+        str = str != null ? str : "";
+        if(str.length >= length) return str;
+        length = length - str.length;
+        for(let i:number = 0; i < length; i++)
+        {
+            str = num + "" + str;
+        }
+        return str;
+    }
+
+    /**
+     * 头部填充num
+     * @param	str    	    目标字符串
+     * @param	length    	填充完的长度
+	 * @param	num         填充的数值
+     */
+    public static padEnd(str:string, length:number, num:number):string
+    {
+        str = str != null ? str : "";
+        if(str.length >= length) return str;
+        length = length - str.length;
+        for(let i:number = 0; i < length; i++)
+        {
+            str += num + "";
+        }
+        return str;
+    }
+
+    /**
+	 * 大整型相加
+	 * @param	a    	大整型a
+	 * @param	b       大整型b
+	 * @return  大整型
+	 */
+    public static sumInteger(a:string, b:string):string
+    {
+        let length:number = Math.max(a.length, b.length);
+        a = StringUtil.padStart(a, length, 0);
+        b = StringUtil.padStart(b, length, 0);
+        let result:string = "";
+        let carry:number = 0;
+        for(let i:number = length - 1; i >= 0; i--)
+        {
+            let sum:number = parseInt(a[i]) + parseInt(b[i]) + carry;
+            result = (sum % 10) + result;
+            carry = Math.floor(sum / 10);
+        }
+        if(carry) result = carry + result;
+        return result;
+    }
 }
 }

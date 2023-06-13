@@ -764,12 +764,11 @@ export class MathUtil
         for(let i:number = 0; i < count; i++)
         {
             let time:number = dt * i;
-            console.log(time);
+            // console.log(time);
             let tx:number = sx + vx * time;
             let ty:number = sy + vy * time + .5 * a * time * time;
             if(back) back.call(this, tx, ty);
         }
-
     }
 }
 }

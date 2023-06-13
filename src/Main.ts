@@ -106,8 +106,8 @@ class Main extends egret.DisplayObjectContainer {
         // new TimeUtilTest();
         // new Vector2DTest(this);
 
-        let o = {"a":1, "b":true, "c":[1,{"d":111,"aaa":[12,12,12]},1], "e":{"aa":1,"bb":false}};
-        console.log(utils.ObjectUtil.clone(o));
+        // let o = {"a":1, "b":true, "c":[1,{"d":111,"aaa":[12,12,12]},1], "e":{"aa":1,"bb":false}};
+        // console.log(utils.ObjectUtil.clone(o));
 
         // this.addChild(new ChainTest());
         // this.addChild(new RopeTest());
@@ -125,5 +125,8 @@ class Main extends egret.DisplayObjectContainer {
         // this.addChild(new SlotsTest());
         // this.addChild(new ResidueShadowTest());
         // this.addChild(new FlameGunTest());
+        console.log(utils.StringUtil.padStart("aaa", 8, 1));
+        console.log(utils.StringUtil.padEnd("aaa", 8, 1));
+        console.log(utils.StringUtil.sumInteger("90000000000000000000000000000", "90000000000000000000000000001"));
     }
 }

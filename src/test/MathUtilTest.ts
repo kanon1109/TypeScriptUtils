@@ -42,7 +42,6 @@ class MathUtilTest
         this.spt = new egret.Sprite();
         stage.addChild(this.spt);
         utils.MathUtil.paraCurve(100, 300, 10, -20, .98, 100, .8, this.back.bind(this));
-
     }
 
     private back(tx:number, ty:number):void

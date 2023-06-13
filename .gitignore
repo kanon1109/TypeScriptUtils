@@ -1,0 +1,6 @@
+.DS_Store
+Thumbs.db
+/bin-release/*
+/bin-debug/*
+/bin-debug
+/bin-release
