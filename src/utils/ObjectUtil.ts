@@ -12,14 +12,17 @@ export class ObjectUtil
 		var c = c || <T>{};
 		for (var i in p) 
 		{
-			if (typeof p[i] === 'object') 
+			if(p.hasOwnProperty(i))
 			{
-				c[i] = p[i] instanceof Array ? [] : {};
-				ObjectUtil.clone(p[i], c[i]);
-			} 
-			else 
-			{
-				c[i] = p[i];
+				if (typeof p[i] === 'object') 
+				{
+					c[i] = p[i] instanceof Array ? [] : {};
+					ObjectUtil.clone(p[i], c[i]);
+				} 
+				else 
+				{
+					c[i] = p[i];
+				}
 			}
 		}
 		return c;
@@ -41,7 +44,10 @@ export class ObjectUtil
 		let count:number = 0;
 		for (var key in o)
 		{
-			count++;
+			if(o.hasOwnProperty(key))
+			{
+				count++;
+			}
 		}
 		return count;
 	}
