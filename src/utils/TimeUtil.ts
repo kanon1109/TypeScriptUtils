@@ -177,5 +177,56 @@ export class TimeUtil
 		let d:Date = new Date(year, month, 0)
 		return d.getDate()
 	}
+
+	/**
+	 * 格式化日期
+	 */
+	public static formatDateId(dateId:number, partition:string="-"):string
+	{
+		if((dateId + "").length != 8) return "";
+		let year:string = (dateId + "").substr(0, 4);
+		let month:string = (dateId + "").substr(4, 2);
+		let day:string = (dateId + "").substr(6, 2);
+		return year + partition + month + partition + day
+	}
+
+	/**
+	 * 获取星期
+	 */
+	public static getWeek(d?:Date):string
+	{
+		d = d ? d : new Date();
+		let weeks:string[] = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
+		return weeks[d.getDay()];
+	}
+
+	/**
+	 * 获取b-a之间的所有年份+月份
+	 */
+	public static getBetweenDateList(a:Date, b:Date):{year:number, month:number}[]
+	{
+		if(!a || !b) return null;
+		let dataList:{year:number, month:number}[] = [];
+		let year:number = a.getFullYear();
+		let month:number = a.getMonth() + 1;
+		let nowYear:number = b.getFullYear();
+		let nowMonth:number = b.getMonth() + 1;
+		let yearCount:number = nowYear - year;
+		for(let i:number = nowMonth; i >= 1; i--)
+		{
+			let data:any = {year:nowYear, month:i};
+			dataList.push(data);
+		}
+		for(let i:number = 1; i <= yearCount; i++)
+		{
+			let year:number = nowYear - i;
+			for(let j:number = 12; j >= 1; j--)
+			{
+				let data:any = {year:year, month:j};
+				dataList.push(data);
+			}
+		}
+		return dataList;
+	}
 }
 }
