@@ -381,5 +381,78 @@ export class StringUtil
         if(carry) result = carry + result;
         return result;
     }
+
+     /**
+	 * 编码base64
+	 */
+	public static base64(s:string):string
+    {
+		var b:egret.ByteArray = new egret.ByteArray();
+		b.writeUTFBytes(s);
+		return egret.Base64Util.encode(b.buffer);
+	}
+	/**
+	 * 解码base64
+	 */
+	public static decode64(s:string):string
+    {
+		var b:egret.ByteArray = new egret.ByteArray(egret.Base64Util.decode(s));
+		return b.readUTFBytes(b.bytesAvailable);
+	}
+
+    /**
+     * 判断是否是手机号
+     */
+    public static checkPhone(tel:string):boolean
+    {
+        return /^1[3456789]\d{9}$/.test(tel);
+    }
+
+    /**
+     * 数字转换汉子
+     */
+    public static numToStr(getNum): string 
+    {
+        if (getNum == null || getNum == "") return "0";
+        let n = Number(Number(getNum).toFixed(1));
+        let h;
+        let t = "";
+        let result: string;
+        if (n < 10000) {
+            h = n;
+            t = "";
+        } else if (n >= 10000 && n < 100000000) {
+            h = n;
+            t = "";
+            // h = (n / 1000);
+            // t = "万";
+        } else if (n >= 100000000 && n < 1000000000000) {
+            h = (n / 10000000);
+            t = "亿";
+        } else if (n >= 1000000000000 && n < 10000000000000) {
+            h = (n / 100000000000);
+            t = "万亿";
+        } else if (n >= 10000000000000) {
+            h = (n / 10000000000000);
+            t = "亿亿";
+        }
+        if (n >= 10000) {
+            h = Math.floor(h) / 10;
+        }
+        result = h + t;
+        return result;
+    }
+
+    /**
+	 * 随机唯一字符串
+	 */
+	public static unid(n:number=32, gap:string=""):string
+    {
+		let a = [];
+		for(let i:number = 0; i< (n / 4); i++) {
+			a.push((((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1));
+		}
+		return a.join(gap);
+	}
 }
 }

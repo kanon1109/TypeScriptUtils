@@ -103,12 +103,12 @@ export class Random
      * Random.sample([1, 2, 3, 4, 5],  3)  // Choose 3 elements
      * [4, 1, 5]
      * </pre>
-     * @param sequence
-     * @param num
-     * @return
-     *
+     * @param sequence  数组
+     * @param num       采样数量
+     * @param exclude   排除的对象索引
+     * @return 采样后的数组
      */
-    public static sample(sequence:any[], num:number):any[]
+    public static sample(sequence:any[], num:number, exclude:number=-1):any[]
     {
         var len:number = sequence.length;
         if (num <= 0 || len < num)
@@ -119,7 +119,7 @@ export class Random
         for (var i:number = 0; i < num; i++)
         {
             var index:number = Math.floor(Random.random() * len);
-            while (indices.indexOf(index) >= 0)
+            while (indices.indexOf(index) >= 0 || (index == exclude && num < sequence.length))
                 index = Math.floor(Random.random() * len);
 
             selected.push(sequence[index]);
