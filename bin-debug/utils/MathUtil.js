@@ -647,7 +647,7 @@ var utils;
             // h = v_y * t + 0.5 * a * t * t
             for (var i = 0; i < count; i++) {
                 var time = dt * i;
-                console.log(time);
+                // console.log(time);
                 var tx = sx + vx * time;
                 var ty = sy + vy * time + .5 * a * time * time;
                 if (back)

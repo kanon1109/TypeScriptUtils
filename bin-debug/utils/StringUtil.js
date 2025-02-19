@@ -261,6 +261,130 @@ var utils;
             return buf;
         };
         /**
+         * 头部填充num
+         * @param	str    	    目标字符串
+         * @param	length    	填充完的长度
+         * @param	num         填充的数值
+         */
+        StringUtil.padStart = function (str, length, num) {
+            str = str != null ? str : "";
+            if (str.length >= length)
+                return str;
+            length = length - str.length;
+            for (var i = 0; i < length; i++) {
+                str = num + "" + str;
+            }
+            return str;
+        };
+        /**
+         * 头部填充num
+         * @param	str    	    目标字符串
+         * @param	length    	填充完的长度
+         * @param	num         填充的数值
+         */
+        StringUtil.padEnd = function (str, length, num) {
+            str = str != null ? str : "";
+            if (str.length >= length)
+                return str;
+            length = length - str.length;
+            for (var i = 0; i < length; i++) {
+                str += num + "";
+            }
+            return str;
+        };
+        /**
+         * 大整型相加
+         * @param	a    	大整型a
+         * @param	b       大整型b
+         * @return  大整型
+         */
+        StringUtil.sumInteger = function (a, b) {
+            var length = Math.max(a.length, b.length);
+            a = StringUtil.padStart(a, length, 0);
+            b = StringUtil.padStart(b, length, 0);
+            var result = "";
+            var carry = 0;
+            for (var i = length - 1; i >= 0; i--) {
+                var sum = parseInt(a[i]) + parseInt(b[i]) + carry;
+                result = (sum % 10) + result;
+                carry = Math.floor(sum / 10);
+            }
+            if (carry)
+                result = carry + result;
+            return result;
+        };
+        /**
+        * 编码base64
+        */
+        StringUtil.base64 = function (s) {
+            var b = new egret.ByteArray();
+            b.writeUTFBytes(s);
+            return egret.Base64Util.encode(b.buffer);
+        };
+        /**
+         * 解码base64
+         */
+        StringUtil.decode64 = function (s) {
+            var b = new egret.ByteArray(egret.Base64Util.decode(s));
+            return b.readUTFBytes(b.bytesAvailable);
+        };
+        /**
+         * 判断是否是手机号
+         */
+        StringUtil.checkPhone = function (tel) {
+            return /^1[3456789]\d{9}$/.test(tel);
+        };
+        /**
+         * 数字转换汉子
+         */
+        StringUtil.numToStr = function (getNum) {
+            if (getNum == null || getNum == "")
+                return "0";
+            var n = Number(Number(getNum).toFixed(1));
+            var h;
+            var t = "";
+            var result;
+            if (n < 10000) {
+                h = n;
+                t = "";
+            }
+            else if (n >= 10000 && n < 100000000) {
+                h = n;
+                t = "";
+                // h = (n / 1000);
+                // t = "万";
+            }
+            else if (n >= 100000000 && n < 1000000000000) {
+                h = (n / 10000000);
+                t = "亿";
+            }
+            else if (n >= 1000000000000 && n < 10000000000000) {
+                h = (n / 100000000000);
+                t = "万亿";
+            }
+            else if (n >= 10000000000000) {
+                h = (n / 10000000000000);
+                t = "亿亿";
+            }
+            if (n >= 10000) {
+                h = Math.floor(h) / 10;
+            }
+            result = h + t;
+            return result;
+        };
+        /**
+         * 随机唯一字符串
+         */
+        StringUtil.unid = function (n, gap) {
+            if (n === void 0) { n = 32; }
+            if (gap === void 0) { gap = ""; }
+            var a = [];
+            for (var i = 0; i < (n / 4); i++) {
+                a.push((((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1));
+            }
+            return a.join(gap);
+        };
+        /**
          * 特殊符号字符串
          */
         StringUtil.specialSigns = [

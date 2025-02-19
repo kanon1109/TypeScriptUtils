@@ -15,12 +15,14 @@ var utils;
             if (c === void 0) { c = null; }
             var c = c || {};
             for (var i in p) {
-                if (typeof p[i] === 'object') {
-                    c[i] = p[i] instanceof Array ? [] : {};
-                    ObjectUtil.clone(p[i], c[i]);
-                }
-                else {
-                    c[i] = p[i];
+                if (p.hasOwnProperty(i)) {
+                    if (typeof p[i] === 'object') {
+                        c[i] = p[i] instanceof Array ? [] : {};
+                        ObjectUtil.clone(p[i], c[i]);
+                    }
+                    else {
+                        c[i] = p[i];
+                    }
                 }
             }
             return c;
@@ -40,7 +42,9 @@ var utils;
                 return 0;
             var count = 0;
             for (var key in o) {
-                count++;
+                if (o.hasOwnProperty(key)) {
+                    count++;
+                }
             }
             return count;
         };

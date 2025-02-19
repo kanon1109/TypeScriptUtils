@@ -75,7 +75,7 @@ var utils;
          * 获取一个时间范围内得所有日期数据
          */
         TimeFormat.getDateRange = function (startDate, endDate) {
-            var dataArr = [];
+            var dateArr = [];
             var weeks = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
             while ((endDate.getTime() - startDate.getTime()) >= 0) {
                 var year = startDate.getFullYear();
@@ -86,11 +86,11 @@ var utils;
                 dataObj["year"] = year;
                 dataObj["date"] = month + "-" + day;
                 dataObj["week"] = week;
-                dataArr.push(dataObj);
+                dateArr.push(dataObj);
                 startDate.setDate(startDate.getDate() + 1);
             }
-            dataArr[0].week = "今天";
-            return dataArr;
+            dateArr[0].week = "今天";
+            return dateArr;
         };
         return TimeFormat;
     }());

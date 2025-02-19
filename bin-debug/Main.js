@@ -149,7 +149,7 @@ var Main = (function (_super) {
      * Create a game scene
      */
     Main.prototype.createGameScene = function () {
-        // new TestRandom();
+        new TestRandom();
         // new TestString();
         // new TestArrayUtil();
         // new EnterFrameTest();
@@ -163,8 +163,8 @@ var Main = (function (_super) {
         // new EllipseCurveTest(this.stage);
         // new TimeUtilTest();
         // new Vector2DTest(this);
-        var o = { "a": 1, "b": true, "c": [1, { "d": 111, "aaa": [12, 12, 12] }, 1], "e": { "aa": 1, "bb": false } };
-        console.log(utils.ObjectUtil.clone(o));
+        // let o = {"a":1, "b":true, "c":[1,{"d":111,"aaa":[12,12,12]},1], "e":{"aa":1,"bb":false}};
+        // console.log(utils.ObjectUtil.clone(o));
         // this.addChild(new ChainTest());
         // this.addChild(new RopeTest());
         // this.addChild(new TreeTest());
@@ -181,6 +181,9 @@ var Main = (function (_super) {
         // this.addChild(new SlotsTest());
         // this.addChild(new ResidueShadowTest());
         // this.addChild(new FlameGunTest());
+        // console.log(utils.StringUtil.padStart("aaa", 8, 1));
+        // console.log(utils.StringUtil.padEnd("aaa", 8, 1));
+        // console.log(utils.StringUtil.sumInteger("90000000000000000000000000000", "90000000000000000000000000001"));
     };
     return Main;
 }(egret.DisplayObjectContainer));

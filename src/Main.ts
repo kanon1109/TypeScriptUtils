@@ -91,7 +91,7 @@ class Main extends egret.DisplayObjectContainer {
      */
     private createGameScene() {
        
-        // new TestRandom();
+        new TestRandom();
         // new TestString();
         // new TestArrayUtil();
         // new EnterFrameTest();
@@ -125,8 +125,8 @@ class Main extends egret.DisplayObjectContainer {
         // this.addChild(new SlotsTest());
         // this.addChild(new ResidueShadowTest());
         // this.addChild(new FlameGunTest());
-        console.log(utils.StringUtil.padStart("aaa", 8, 1));
-        console.log(utils.StringUtil.padEnd("aaa", 8, 1));
-        console.log(utils.StringUtil.sumInteger("90000000000000000000000000000", "90000000000000000000000000001"));
+        // console.log(utils.StringUtil.padStart("aaa", 8, 1));
+        // console.log(utils.StringUtil.padEnd("aaa", 8, 1));
+        // console.log(utils.StringUtil.sumInteger("90000000000000000000000000000", "90000000000000000000000000001"));
     }
 }

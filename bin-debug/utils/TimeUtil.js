@@ -177,6 +177,51 @@ var utils;
             var d = new Date(year, month, 0);
             return d.getDate();
         };
+        /**
+         * 格式化日期
+         */
+        TimeUtil.formatDateId = function (dateId, partition) {
+            if (partition === void 0) { partition = "-"; }
+            if ((dateId + "").length != 8)
+                return "";
+            var year = (dateId + "").substr(0, 4);
+            var month = (dateId + "").substr(4, 2);
+            var day = (dateId + "").substr(6, 2);
+            return year + partition + month + partition + day;
+        };
+        /**
+         * 获取星期
+         */
+        TimeUtil.getWeek = function (d) {
+            d = d ? d : new Date();
+            var weeks = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
+            return weeks[d.getDay()];
+        };
+        /**
+         * 获取b-a之间的所有年份+月份
+         */
+        TimeUtil.getBetweenDateList = function (a, b) {
+            if (!a || !b)
+                return null;
+            var dataList = [];
+            var year = a.getFullYear();
+            var month = a.getMonth() + 1;
+            var nowYear = b.getFullYear();
+            var nowMonth = b.getMonth() + 1;
+            var yearCount = nowYear - year;
+            for (var i = nowMonth; i >= 1; i--) {
+                var data = { year: nowYear, month: i };
+                dataList.push(data);
+            }
+            for (var i = 1; i <= yearCount; i++) {
+                var year_1 = nowYear - i;
+                for (var j = 12; j >= 1; j--) {
+                    var data = { year: year_1, month: j };
+                    dataList.push(data);
+                }
+            }
+            return dataList;
+        };
         return TimeUtil;
     }());
     utils.TimeUtil = TimeUtil;
